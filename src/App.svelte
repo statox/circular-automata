@@ -2,15 +2,19 @@
 import Controls from './components/Controls.svelte';
 import Simulation from './components/Simulation.svelte';
 
+let simulation;
+
 const appData = {
-    ruleNumber: 46
+    ruleNumber: 46,
+    W: 50,
+    H: 50
 }
 </script>
 
 <main>
     <h1>Circular automata</h1>
-    <Controls data={appData} />
-    <Simulation data={appData} />
+    <Simulation data={appData} bind:this={simulation} />
+    <Controls data={appData} on:updateData={simulation.dataUpdated} />
 </main>
 
 <style>
