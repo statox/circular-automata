@@ -1,29 +1,36 @@
 <script lang="ts">
     import P5 from 'p5';
-    import {externalCommand} from '../services/service';
+    import {generateAutomaton} from '../services/automaton-services.ts';
+    import {drawAutomatonAsCircle,drawAutomatonInfo} from '../services/drawing-services';
     export let data;
 
     const sketch = (p5: P5) => {
-        let mover, time;
+        const H = 700;
+        const W = 700;
+        let A;
+        let R;
+
         p5.setup = () => {
             const canvas = p5.createCanvas(500, 500);
             canvas.parent('canvasDiv');
 
-            mover = {x: 0, y: p5.width/3};
-            time = 0;
+            A = generateAutomaton(46, Math.floor(Math.random() * 100), Math.floor(Math.random() * 500));
+            setInterval(() => {
+                A = generateAutomaton(
+                    Math.floor(Math.random() * 255),
+                    Math.floor(Math.random() * 100),
+                    Math.floor(Math.random() * 500)
+                );
+            }, 3000);
         };
 
         // The sketch draw method
         p5.draw = () => {
-            p5.background(30, 200, 30);
-            p5.fill('black');
-            p5.text(data.ruleNumber, p5.width/2, p5.height/2 - 10);
-            p5.text(externalCommand(), p5.width/2, p5.height/2 + 10);
+            p5.background(120, 200, 120);
+            // drawAutomatonAsSquare(p5, A);
+            drawAutomatonAsCircle(p5, A);
 
-            mover.x = (mover.x+1) % p5.width;
-            p5.fill('red');
-            p5.circle(mover.x, mover.y, 10, 10);
-            time++;
+            drawAutomatonInfo(p5, A);
         };
     };
 
