@@ -6,8 +6,8 @@ let simulation;
 
 const appData: AppData = {
     ruleNumber: 46,
-    W: 50,
-    H: 50,
+    W: 51,
+    H: 51,
     type: 'square'
 }
 </script>
