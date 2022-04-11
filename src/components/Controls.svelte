@@ -31,8 +31,11 @@
 
 <main>
     <div>
-        <button on:click={toggleRandomChanges}>Toggle random changes</button>
-        <span>{randomChanges}</span>
+        <span>
+            <button on:click={toggleRandomChanges}>Toggle random changes</button>
+            <label for="enabledRandomBox">Enabled</label>
+            <input type="radio" id="enabledRandomBox" checked={randomChanges}>
+        </span>
     </div>
     <div>
         <span>Rule: {data.ruleNumber}</span>
