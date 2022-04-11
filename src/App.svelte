@@ -4,10 +4,11 @@ import Simulation from './components/Simulation.svelte';
 
 let simulation;
 
-const appData = {
+const appData: AppData = {
     ruleNumber: 46,
     W: 50,
-    H: 50
+    H: 50,
+    type: 'square'
 }
 </script>
 

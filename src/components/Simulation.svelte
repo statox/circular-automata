@@ -2,7 +2,7 @@
     import P5 from 'p5';
     import {generateAutomaton} from '../services/automaton-services.ts';
     import {drawAutomatonAsSquare,drawAutomatonAsCircle,drawAutomatonInfo} from '../services/drawing-services';
-    export let data;
+    export let data: AppData;
     let A;
 
     export const dataUpdated = () => {
@@ -23,8 +23,11 @@
         // The sketch draw method
         p5.draw = () => {
             p5.background(120, 200, 120);
-            drawAutomatonAsSquare(p5, A);
-            //drawAutomatonAsCircle(p5, A);
+            if (data.type === 'square') {
+                drawAutomatonAsSquare(p5, A);
+            } else {
+                drawAutomatonAsCircle(p5, A);
+            }
 
             drawAutomatonInfo(p5, A);
         };

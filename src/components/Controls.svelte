@@ -2,7 +2,7 @@
     import { createEventDispatcher } from 'svelte'
     const dispatch = createEventDispatcher()
 
-    export let data;
+    export let data: AppData;
 
     const increaseRuleNumber = () => {
         data.ruleNumber = data.ruleNumber+1;
@@ -31,9 +31,18 @@
         data.H = data.H-1;
         dispatch('updateData')
     }
+
+    const toggleViewType = () => {
+        data.type = data.type === 'square' ? 'circle' : 'square';
+        dispatch('updateData')
+    }
 </script>
 
 <main>
+    <div>
+        <button on:click={toggleViewType}>Toggle view</button>
+        <span>{data.type}</span>
+    </div>
     <div>
         <button on:click={decreaseRuleNumber}>Decrement rule number</button>
         <button on:click={increaseRuleNumber}>Increment rule number</button>
