@@ -6,9 +6,9 @@ let simulation1;
 let simulation2;
 
 const appData: AppData = {
-    ruleNumber: 46,
-    W: 51,
-    H: 51,
+    ruleNumber: 90,
+    W: 50,
+    H: 50,
 }
 </script>
 
