@@ -25,13 +25,12 @@
         }
         randomChanges = !randomChanges;
     }
+
+    toggleRandomChanges();
 </script>
 
 <main>
     <div>
-        <button on:click={toggleViewType}>Toggle view</button>
-        <span>{data.type}</span>
-
         <button on:click={toggleRandomChanges}>Toggle random changes</button>
         <span>{randomChanges}</span>
     </div>

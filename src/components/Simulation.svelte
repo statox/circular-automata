@@ -3,6 +3,7 @@
     import {generateAutomaton} from '../services/automaton-services.ts';
     import {drawAutomatonAsSquare,drawAutomatonAsCircle,drawAutomatonInfo} from '../services/drawing-services';
     export let data: AppData;
+    export let type: 'square'|'circle';
     let A;
 
     export const dataUpdated = () => {
@@ -23,13 +24,13 @@
         // The sketch draw method
         p5.draw = () => {
             p5.background(120, 200, 120);
-            if (data.type === 'square') {
+            if (type === 'square') {
                 drawAutomatonAsSquare(p5, A);
             } else {
                 drawAutomatonAsCircle(p5, A);
             }
 
-            drawAutomatonInfo(p5, A);
+            /* drawAutomatonInfo(p5, A); */
         };
     };
 
