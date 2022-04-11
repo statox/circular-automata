@@ -12,10 +12,6 @@ const appData: AppData = {
 }
 </script>
 
-<svelte:head>
-  <base href="circular-automata/">
-</svelte:head>
-
 <main>
     <h1>Circular automata</h1>
     <Simulation type='square' data={appData} bind:this={simulation1} />
