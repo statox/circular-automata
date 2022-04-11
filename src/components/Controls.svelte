@@ -4,34 +4,6 @@
 
     export let data: AppData;
 
-    const increaseRuleNumber = () => {
-        data.ruleNumber = data.ruleNumber+1;
-        dispatch('updateData', data)
-    }
-    const decreaseRuleNumber = () => {
-        data.ruleNumber = data.ruleNumber-1;
-        dispatch('updateData', data)
-    }
-
-    const increaseWidth = () => {
-        data.W = data.W+1;
-        dispatch('updateData')
-    }
-    const decreaseWidth = () => {
-        data.W = data.W-1;
-        dispatch('updateData')
-    }
-
-
-    const increaseHeight = () => {
-        data.H = data.H+1;
-        dispatch('updateData')
-    }
-    const decreaseHeight = () => {
-        data.H = data.H-1;
-        dispatch('updateData')
-    }
-
     const toggleViewType = () => {
         data.type = data.type === 'square' ? 'circle' : 'square';
         dispatch('updateData')
@@ -44,18 +16,15 @@
         <span>{data.type}</span>
     </div>
     <div>
-        <button on:click={decreaseRuleNumber}>Decrement rule number</button>
-        <button on:click={increaseRuleNumber}>Increment rule number</button>
-        <span>rule number: {data.ruleNumber}</span>
+        <span>Rule: {data.ruleNumber}</span>
+        <input type=number bind:value={data.ruleNumber} on:change={() => dispatch('updateData')} min=0 max=256>
     </div>
     <div>
-        <button on:click={decreaseWidth}>Decrement lines width</button>
-        <button on:click={increaseWidth}>Increment lines width</button>
-        <span>rule number: {data.W}</span>
+        <span>Line width: {data.W}</span>
+        <input type=range bind:value={data.W} on:change={() => dispatch('updateData')} min=0 max=300>
     </div>
     <div>
-        <button on:click={decreaseHeight}>Decrement number of lines</button>
-        <button on:click={increaseHeight}>Increment number of lines</button>
-        <span>rule number: {data.H}</span>
+        <span>Number of lines: {data.H}</span>
+        <input type=range bind:value={data.H} on:change={() => dispatch('updateData')} min=0 max=300>
     </div>
 </main>
