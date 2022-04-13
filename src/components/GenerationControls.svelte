@@ -5,11 +5,11 @@
 
     export let data: AppData;
 
-    let automaticRandomGeneration = false;
-    let automaticRandomGenerationTimer;
-    let animationTimer;
-
-    let settings = {
+    const timers = {
+        automaticRandomGenerationTimer: null,
+        animationTimer: null
+    }
+    const settings = {
         W: false,
         H: false,
         rule: false,
@@ -17,7 +17,8 @@
         interval: 3000,
         color: false,
         firstLineDensity: 50, // A percentage (0-100) of living cells on first line
-        animate: false
+        animate: false,
+        automaticRandomGeneration: false
     };
 
     const MAX_W = 600;
@@ -66,14 +67,14 @@
     }
 
     const toggleAutomaticGeneration = () => {
-        if (automaticRandomGeneration) {
-            clearInterval(automaticRandomGenerationTimer);
+        if (settings.automaticRandomGeneration) {
+            clearInterval(timers.automaticRandomGenerationTimer);
         } else {
             generateRandom();
-            automaticRandomGenerationTimer = setInterval(generateRandom, settings.interval);
+            timers.automaticRandomGenerationTimer = setInterval(generateRandom, settings.interval);
         }
-        automaticRandomGeneration = !automaticRandomGeneration;
-        document.getElementById("newGenerationBtn")?.style.visibility = automaticRandomGeneration ? "hidden" : "visible";
+        settings.automaticRandomGeneration = !settings.automaticRandomGeneration;
+        document.getElementById("newGenerationBtn")?.style.visibility = settings.automaticRandomGeneration ? "hidden" : "visible";
     }
     toggleAutomaticGeneration();
 
@@ -82,19 +83,20 @@
         dispatch('updateData')
     }
     const toggleAnimation = () => {
-        if (animationTimer) {
-            clearInterval(animationTimer);
+        if (settings.animate) {
+            clearInterval(timers.animationTimer);
         } else {
-            animationTimer = setInterval(animation, 50);
+            timers.animationTimer = setInterval(animation, 50);
         }
+        console.log(timers.animationTimer);
         settings.animate = !settings.animate;
     }
     toggleAnimation();
 
     const updateInterval = () => {
-        if (automaticRandomGeneration) {
-            clearInterval(automaticRandomGenerationTimer);
-            automaticRandomGenerationTimer = setInterval(generateRandom, settings.interval);
+        if (settings.automaticRandomGeneration) {
+            clearInterval(timers.automaticRandomGenerationTimer);
+            timers.automaticRandomGenerationTimer = setInterval(generateRandom, settings.interval);
         }
     }
 </script>
@@ -121,7 +123,7 @@
         <div>
             <button id="animateGenerationBtn" on:click={toggleAnimation}>{settings.animate ? 'Stop the animation' : 'Animate the automaton'}</button>
             <button id="newGenerationBtn" on:click={generateRandom}>Generate a new random configuration</button>
-            <button on:click={toggleAutomaticGeneration}>{automaticRandomGeneration ? 'Stop' : 'Start'} automatic random generations</button>
+            <button on:click={toggleAutomaticGeneration}>{settings.automaticRandomGeneration ? 'Stop' : 'Start'} automatic random generations</button>
         </div>
     </div>
 </main>
