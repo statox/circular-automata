@@ -13,7 +13,8 @@
         rule: false,
         firstLine: true,
         interval: 3000,
-        color: false
+        color: false,
+        firstLineDensity: 50 // A percentage (0-100) of living cells on first line
     };
 
     const MAX_W = 600;
@@ -31,8 +32,14 @@
         }
         if (settings.firstLine || settings.W) {
             data.firstLine = [];
+            let atLeastOne = false;
             for (let _=0; _<data.W; _++) {
-                data.firstLine.push(Math.random() > 0.7);
+                const v = Math.random() < settings.firstLineDensity/100
+                if (v) atLeastOne=true;
+                data.firstLine.push(v);
+            }
+            if (!atLeastOne) {
+                data.firstLine[Math.floor(Math.random()*data.firstLine.length-1)] = true;
             }
         }
         if (settings.color) {
@@ -71,8 +78,6 @@
         <h3>Generation controls</h3>
         <div>
             <p>Parameters to change randomly</p>
-        </div>
-        <div>
             <span>Line width <input type="checkbox" bind:checked={settings.W} id="toggleLineWidth"></span>
             <span>Automata height <input type="checkbox" bind:checked={settings.H} id="toggleHeight"></span>
             <span>Rule <input type="checkbox" bind:checked={settings.rule} id="toggleRule"></span>
@@ -80,9 +85,11 @@
             <span>Color <input type="checkbox" bind:checked={settings.color} id="toggleColor"></span>
         </div>
         <div>
-            <p>Interval (in ms) between two random generations</p>
+            <p>Density of the first line (between 0 and 100: The ratio of alive cells)</p>
+            <span>Density <input type="number" bind:value={settings.firstLineDensity} id="inputDensity" min=0 max=100></span>
         </div>
         <div>
+            <p>Interval (in ms) between two random generations</p>
             <span>Interval <input type="number" bind:value={settings.interval} id="inputInterval" on:change={updateInterval} min=1 max=10000></span>
         </div>
         <div>
