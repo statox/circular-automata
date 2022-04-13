@@ -14,7 +14,8 @@ const appData: AppData = {
         background: {H: 307, S: 87, B: 36},
         fill:  {H: 157, S: 88, B: 36},
         firstLineFill:  {H: 37, S: 88, B: 36}
-    }
+    },
+    animate: true
 }
 appData.firstLine[Math.floor(appData.W/2)] = true;
 

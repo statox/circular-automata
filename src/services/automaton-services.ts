@@ -27,6 +27,11 @@ function generateAutomaton(ruleNumber: number, W: number, H: number, firstLine?:
     return {cells, rules, ruleNumber, W, H};
 }
 
+function animationStep(A: Automaton) {
+    generateNewLine(A.cells, A.rules);
+    A.cells.shift();
+}
+
 function generateNewLine(A: Line[], rules: Rules) {
     const newLine = nextGeneration(A[A.length - 1], rules);
     A.push(newLine);
@@ -42,4 +47,4 @@ function turnIntoPyramidAutomata(A: Line[]) {
     }
 }
 
-export {generateAutomaton};
+export {generateAutomaton, animationStep};

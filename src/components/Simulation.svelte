@@ -1,6 +1,6 @@
 <script lang="ts">
     import P5 from 'p5';
-    import {generateAutomaton} from '../services/automaton-services.ts';
+    import {generateAutomaton, animationStep} from '../services/automaton-services.ts';
     import {drawAutomatonAsSquare,drawAutomatonAsCircle,drawAutomatonInfo} from '../services/drawing-services';
     export let data: AppData;
     export let type: 'square'|'circle';
@@ -39,7 +39,10 @@
             }
 
             /* drawAutomatonInfo(p5, A); */
-            p5.noLoop();
+            /* p5.noLoop(); */
+            if (data.animate) {
+                animationStep(A);
+            }
         };
     };
 

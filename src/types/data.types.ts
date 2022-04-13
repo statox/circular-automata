@@ -14,6 +14,7 @@ type AppData = {
         fill: Color;
         firstLineFill: Color;
     };
+    animate: boolean;
 };
 
 export type {AppData};
