@@ -28,15 +28,16 @@ function drawAutomatonAsCircle(p5: P5, A: Automaton, colors: {fillColor: P5.Colo
     p5.push();
     p5.translate(p5.width / 2, p5.height / 2);
     const pos = new P5.Vector();
-    pos.x = 0;
-    pos.y = scale;
 
     p5.noStroke();
     p5.noFill();
 
-    let n = 1;
     for (let y = 0; y < A.cells.length; y++) {
+        pos.x = 0;
+        pos.y = -1;
+        pos.rotate(-angle);
         for (let x = 0; x < A.cells[0].length; x++) {
+            pos.rotate(angle);
             if (A.cells[y][x]) {
                 p5.fill(y === 0 ? colors.firstLineFillColor : colors.fillColor);
             } else {
@@ -65,7 +66,6 @@ function drawAutomatonAsCircle(p5: P5, A: Automaton, colors: {fillColor: P5.Colo
             p5.vertex(bottomRight.x, bottomRight.y);
             p5.vertex(bottomLeft.x, bottomLeft.y);
             p5.endShape();
-            pos.rotate(angle);
         }
     }
     p5.pop();
