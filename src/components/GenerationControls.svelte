@@ -37,10 +37,12 @@
         }
         if (settings.color) {
             data.colors.background.H = Math.floor(Math.random() * 360);
-            data.colors.fill.H = (data.colors.background.H + 360/2) % 360;
+            data.colors.fill.H = (data.colors.background.H + 360/3) % 360;
+            data.colors.firstLineFill.H = (data.colors.background.H - 360/3) % 360;
 
             data.colors.background.S = Math.floor(Math.random() * 100);
             data.colors.fill.S = Math.floor(Math.random() * 100);
+            data.colors.firstLineFill.S = Math.floor(Math.random() * 100);
         }
         dispatch('updateData')
     }

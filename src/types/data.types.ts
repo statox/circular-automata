@@ -12,6 +12,7 @@ type AppData = {
     colors?: {
         background: Color;
         fill: Color;
+        firstLineFill: Color;
     };
 };
 

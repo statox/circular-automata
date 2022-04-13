@@ -26,15 +26,16 @@
 
         // The sketch draw method
         p5.draw = () => {
-            const {background, fill} = data.colors;
+            const {background, fill, firstLineFill} = data.colors;
             const backgroundColor = p5.color(background.H, background.S, background.B);
             const fillColor = p5.color(fill.H, fill.S, fill.B);
+            const firstLineFillColor = p5.color(firstLineFill.H, firstLineFill.S, firstLineFill.B);
 
             p5.background(backgroundColor);
             if (type === 'square') {
-                drawAutomatonAsSquare(p5, A, fillColor);
+                drawAutomatonAsSquare(p5, A, {fillColor, firstLineFillColor});
             } else {
-                drawAutomatonAsCircle(p5, A, fillColor);
+                drawAutomatonAsCircle(p5, A, {fillColor, firstLineFillColor});
             }
 
             /* drawAutomatonInfo(p5, A); */

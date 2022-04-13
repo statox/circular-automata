@@ -1,7 +1,7 @@
 import P5 from 'p5';
 import type {Automaton} from '../types/automaton.types';
 
-function drawAutomatonAsSquare(p5: P5, A: Automaton, fillColor: P5.Color) {
+function drawAutomatonAsSquare(p5: P5, A: Automaton, colors: {fillColor: P5.Color; firstLineFillColor: P5.Color}) {
     const scaleX = p5.width / A.cells[0].length;
     const scaleY = p5.height / A.cells.length;
 
@@ -9,7 +9,7 @@ function drawAutomatonAsSquare(p5: P5, A: Automaton, fillColor: P5.Color) {
     for (let y = 0; y < A.cells.length; y++) {
         for (let x = 0; x < A.cells[0].length; x++) {
             if (A.cells[y][x]) {
-                p5.fill(fillColor);
+                p5.fill(y === 0 ? colors.firstLineFillColor : colors.fillColor);
             } else {
                 continue;
             }
@@ -18,7 +18,7 @@ function drawAutomatonAsSquare(p5: P5, A: Automaton, fillColor: P5.Color) {
     }
 }
 
-function drawAutomatonAsCircle(p5: P5, A: Automaton, fillColor: P5.Color) {
+function drawAutomatonAsCircle(p5: P5, A: Automaton, colors: {fillColor: P5.Color; firstLineFillColor: P5.Color}) {
     const scale = p5.width / 2 / A.cells.length;
     const angle = p5.TWO_PI / A.cells[0].length;
 
@@ -38,7 +38,7 @@ function drawAutomatonAsCircle(p5: P5, A: Automaton, fillColor: P5.Color) {
     for (let y = 0; y < A.cells.length; y++) {
         for (let x = 0; x < A.cells[0].length; x++) {
             if (A.cells[y][x]) {
-                p5.fill(fillColor);
+                p5.fill(y === 0 ? colors.firstLineFillColor : colors.fillColor);
             } else {
                 continue;
             }

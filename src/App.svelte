@@ -12,7 +12,8 @@ const appData: AppData = {
     firstLine: new Array(50).fill(false),
     colors: {
         background: {H: 307, S: 87, B: 36},
-        fill:  {H: 157, S: 88, B: 36}
+        fill:  {H: 157, S: 88, B: 36},
+        firstLineFill:  {H: 37, S: 88, B: 36}
     }
 }
 appData.firstLine[Math.floor(appData.W/2)] = true;
