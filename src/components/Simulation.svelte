@@ -7,7 +7,7 @@
     let p5Instance;
 
     export const dataUpdated = () => {
-        data.automaton = generateAutomaton(data.ruleNumber, data.W, data.H, data.firstLine);
+        data.automaton = generateAutomaton(data);
     }
 
     const sketch = (p5: P5) => {

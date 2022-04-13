@@ -1,7 +1,8 @@
 import type {Automaton, Line, Rules} from '../types/automaton.types';
 import {generateRulesObject, nextGeneration} from './rules-services';
 
-function generateAutomaton(ruleNumber: number, W: number, H: number, firstLine?: boolean[]): Automaton {
+function generateAutomaton(params: {ruleNumber: number; W: number; H: number; firstLine?: boolean[]}): Automaton {
+    const {ruleNumber, W, H, firstLine} = params;
     const cells: Line[] = [];
     const rules = generateRulesObject(ruleNumber);
 

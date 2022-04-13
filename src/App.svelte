@@ -23,7 +23,7 @@ const appData: AppData = {
 }
 
 appData.firstLine[Math.floor(appData.W/2)] = true;
-appData.automaton = generateAutomaton(appData.ruleNumber, appData.W, appData.H, appData.firstLine);
+appData.automaton = generateAutomaton(appData);
 
 // Once a sub component update the data, update the simulations
 const postDataUpdate = () => {
