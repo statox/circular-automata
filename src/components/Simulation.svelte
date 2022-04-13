@@ -7,6 +7,7 @@
     let p5Instance;
 
     export const dataUpdated = () => {
+        data.automaton = generateAutomaton(data.ruleNumber, data.W, data.H, data.firstLine);
         p5Instance.loop();
     }
 
@@ -36,7 +37,11 @@
             }
 
             /* drawAutomatonInfo(p5, A); */
-            p5.noLoop();
+            if (data.animate) {
+                animationStep(data.automaton);
+            } else {
+                p5.noLoop();
+            }
         };
     };
 

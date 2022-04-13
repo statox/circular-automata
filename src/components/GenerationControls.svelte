@@ -17,7 +17,6 @@
         interval: 3000,
         color: true,
         firstLineDensity: 50, // A percentage (0-100) of living cells on first line
-        animate: false,
         automaticRandomGeneration: false
     };
 
@@ -50,7 +49,7 @@
         // Regenerate a new automaton if one of its configuration changed
         // No need to do it for color changes
         if (settings.W || settings.H || settings.rule || settings.firstLine) {
-            data.automaton = generateAutomaton(data.ruleNumber, data.W, data.H, data.firstLine);
+            dispatch('updateData')
         }
 
         if (settings.color) {
@@ -63,7 +62,6 @@
             data.colors.firstLineFill.S = Math.floor(Math.random() * 100);
         }
 
-        dispatch('updateData')
     }
 
     const toggleAutomaticGeneration = () => {
@@ -78,21 +76,9 @@
     }
     toggleAutomaticGeneration();
 
-    const animation = () => {
-        animationStep(data.automaton);
-        dispatch('updateData')
-    }
     const toggleAnimation = () => {
-        if (settings.animate) {
-            clearInterval(timers.animationTimer);
-        } else {
-            timers.animationTimer = setInterval(animation, 50);
-        }
-        console.log(timers.animationTimer);
-        settings.animate = !settings.animate;
+        data.animate = !data.animate;
     }
-    toggleAnimation();
-
     const updateInterval = () => {
         if (settings.automaticRandomGeneration) {
             clearInterval(timers.automaticRandomGenerationTimer);
@@ -121,7 +107,7 @@
             <span>Interval <input type="number" bind:value={settings.interval} id="inputInterval" on:change={updateInterval} min=1 max=10000></span>
         </div>
         <div>
-            <button id="animateGenerationBtn" on:click={toggleAnimation}>{settings.animate ? 'Stop the animation' : 'Animate the automaton'}</button>
+            <button id="animateGenerationBtn" on:click={toggleAnimation}>{data.animate ? 'Stop the animation' : 'Animate the automaton'}</button>
             <button id="newGenerationBtn" on:click={generateRandom}>Generate a new random configuration</button>
             <button on:click={toggleAutomaticGeneration}>{settings.automaticRandomGeneration ? 'Stop' : 'Start'} automatic random generations</button>
         </div>
