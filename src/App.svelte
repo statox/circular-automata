@@ -12,13 +12,19 @@ const appData: AppData = {
     firstLine: new Array(50).fill(false)
 }
 appData.firstLine[Math.floor(appData.W/2)] = true;
+
+// Once a sub component update the data, update the simulations
+const postDataUpdate = () => {
+    simulation1.dataUpdated();
+    simulation2.dataUpdated()
+}
 </script>
 
 <main>
     <h1>Circular automata</h1>
     <Simulation type='square' data={appData} bind:this={simulation1} />
     <Simulation type='cirle' data={appData} bind:this={simulation2} />
-    <Controls data={appData} on:updateData={() => {simulation1.dataUpdated();simulation2.dataUpdated()}} />
+    <Controls data={appData} on:updateData={postDataUpdate} />
 </main>
 
 <style>
