@@ -4,6 +4,9 @@
 
     export let data: AppData;
 
+    const MAX_W = 600;
+    const MAX_H = 600;
+
     let randomChanges = false;
     let randomChangesTimer;
 
@@ -17,8 +20,8 @@
             clearInterval(randomChangesTimer);
         } else {
             randomChangesTimer = setInterval(() => {
-                data.W = Math.floor(Math.random() * 200);
-                data.H = Math.floor(Math.random() * 200);
+                data.W = Math.floor(Math.random() * MAX_W);
+                data.H = Math.floor(Math.random() * MAX_H);
                 data.ruleNumber = Math.floor(Math.random() * 256);
                 dispatch('updateData')
             }, 3000);
@@ -43,10 +46,10 @@
     </div>
     <div>
         <span>Line width: {data.W}</span>
-        <input type=range bind:value={data.W} on:change={() => dispatch('updateData')} min=0 max=300>
+        <input type=range bind:value={data.W} on:change={() => dispatch('updateData')} min=0 max={MAX_W}>
     </div>
     <div>
         <span>Number of lines: {data.H}</span>
-        <input type=range bind:value={data.H} on:change={() => dispatch('updateData')} min=0 max=300>
+        <input type=range bind:value={data.H} on:change={() => dispatch('updateData')} min=0 max={MAX_H}>
     </div>
 </main>
