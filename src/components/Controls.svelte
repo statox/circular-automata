@@ -1,6 +1,6 @@
 <script lang="ts">
     import RuleControls from './RuleControls.svelte';
-    import AutomataControls from './AutomataControls.svelte';
+    import DimensionsControls from './DimensionsControls.svelte';
     import { createEventDispatcher } from 'svelte'
     const dispatch = createEventDispatcher()
 
@@ -40,7 +40,7 @@
 <main>
     <h2>Controls</h2>
     <RuleControls data={data} on:updateData={dataUpdatedInSubComponent} />
-    <AutomataControls data={data} on:updateData={dataUpdatedInSubComponent} />
+    <DimensionsControls data={data} on:updateData={dataUpdatedInSubComponent} />
     <div>
         <span>
             <button on:click={toggleRandomChanges}>{randomChanges ? 'Stop' : 'Start'} random changes</button>
