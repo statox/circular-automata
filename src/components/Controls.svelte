@@ -1,5 +1,6 @@
 <script lang="ts">
     import RuleControls from './RuleControls.svelte';
+    import AutomataControls from './AutomataControls.svelte';
     import { createEventDispatcher } from 'svelte'
     const dispatch = createEventDispatcher()
 
@@ -39,19 +40,10 @@
 <main>
     <h2>Controls</h2>
     <RuleControls data={data} on:updateData={dataUpdatedInSubComponent} />
+    <AutomataControls data={data} on:updateData={dataUpdatedInSubComponent} />
     <div>
         <span>
-            <button on:click={toggleRandomChanges}>Toggle random changes</button>
-            <label for="enabledRandomBox">Enabled</label>
-            <input type="radio" id="enabledRandomBox" checked={randomChanges}>
+            <button on:click={toggleRandomChanges}>{randomChanges ? 'Stop' : 'Start'} random changes</button>
         </span>
-    </div>
-    <div>
-        <span>Line width: {data.W}</span>
-        <input type=range bind:value={data.W} on:change={() => dispatch('updateData')} min=0 max={MAX_W}>
-    </div>
-    <div>
-        <span>Number of lines: {data.H}</span>
-        <input type=range bind:value={data.H} on:change={() => dispatch('updateData')} min=0 max={MAX_H}>
     </div>
 </main>
