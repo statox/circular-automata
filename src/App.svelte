@@ -9,9 +9,9 @@ let simulation2;
 
 const appData: AppData = {
     ruleNumber: 90,
-    W: 50,
-    H: 50,
-    firstLine: new Array(50).fill(false),
+    W: 100,
+    H: 100,
+    firstLine: new Array(100).fill(false),
     colors: {
         background: {H: 307, S: 87, B: 36},
         fill:  {H: 157, S: 88, B: 36},
