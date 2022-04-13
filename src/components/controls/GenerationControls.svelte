@@ -53,13 +53,13 @@
         }
 
         if (settings.color) {
-            data.colors.background.H = Math.floor(Math.random() * 360);
+            data.colors.background.H = Math.random() * 360;
             data.colors.fill.H = (data.colors.background.H + 360/3) % 360;
             data.colors.firstLineFill.H = (data.colors.background.H - 360/3) % 360;
 
-            data.colors.background.S = Math.floor(Math.random() * 100);
-            data.colors.fill.S = Math.floor(Math.random() * 100);
-            data.colors.firstLineFill.S = Math.floor(Math.random() * 100);
+            data.colors.background.S = 40 + Math.floor(Math.random() * 60);
+            data.colors.fill.S = 40 + Math.floor(Math.random() * 60);
+            data.colors.firstLineFill.S = 40 + Math.floor(Math.random() * 60);
         }
 
     }
