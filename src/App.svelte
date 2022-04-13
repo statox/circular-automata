@@ -1,5 +1,6 @@
 <script lang="ts">
 import Controls from './components/controls/Controls.svelte';
+import GenerationControls from './components/controls/GenerationControls.svelte';
 import Simulation from './components/Simulation.svelte';
 import {generateAutomaton} from './services/automaton-services';
 
@@ -33,6 +34,7 @@ const postDataUpdate = () => {
 
 <main>
     <h1>Circular automata</h1>
+    <GenerationControls data={appData} on:updateData={postDataUpdate} />
     <Simulation type='square' data={appData} bind:this={simulation1} />
     <Simulation type='cirle' data={appData} bind:this={simulation2} />
     <Controls data={appData} on:updateData={postDataUpdate} />

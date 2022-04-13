@@ -1,7 +1,6 @@
 <script lang="ts">
     import RuleControls from './RuleControls.svelte';
     import DimensionsControls from './DimensionsControls.svelte';
-    import GenerationControls from './GenerationControls.svelte';
     import AnimationControls from './AnimationControls.svelte';
     import { createEventDispatcher } from 'svelte'
     const dispatch = createEventDispatcher()
@@ -20,6 +19,5 @@
     <h2>Controls</h2>
     <RuleControls data={data} bind:this={ruleControls} on:updateData={dataUpdatedInSubComponent} />
     <DimensionsControls data={data} on:updateData={dataUpdatedInSubComponent} />
-    <GenerationControls data={data} on:updateData={dataUpdatedInSubComponent} />
     <AnimationControls data={data} on:updateData={dataUpdatedInSubComponent} />
 </main>
