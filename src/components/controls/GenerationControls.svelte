@@ -76,9 +76,11 @@
     }
     toggleAutomaticGeneration();
 
-    const toggleAnimation = () => {
-        data.animate = !data.animate;
+    const toggleSetting = (setting) => {
+        settings[setting] = !settings[setting];
+        dispatch('updateData');
     }
+
     const updateInterval = () => {
         if (settings.automaticRandomGeneration) {
             clearInterval(timers.automaticRandomGenerationTimer);
@@ -92,11 +94,15 @@
         <h3>Generation controls</h3>
         <div>
             <p>Parameters to change randomly</p>
-            <span>Line width <input type="checkbox" bind:checked={settings.W} id="toggleLineWidth"></span>
-            <span>Automata height <input type="checkbox" bind:checked={settings.H} id="toggleHeight"></span>
-            <span>Rule <input type="checkbox" bind:checked={settings.rule} id="toggleRule"></span>
-            <span>First line <input type="checkbox" bind:checked={settings.firstLine} id="toggleFirstLine"></span>
-            <span>Color <input type="checkbox" bind:checked={settings.color} id="toggleColor"></span>
+            <table style="width: 100%">
+                <tr>
+                    <td><button style="width: 100%" class:enabled={settings.W}          on:click ={() => toggleSetting('W')}>Line width</button></td>
+                    <td><button style="width: 100%" class:enabled={settings.H}          on:click ={() => toggleSetting('H')}>Automata height</button></td>
+                    <td><button style="width: 100%" class:enabled={settings.rule}       on:click ={() => toggleSetting('rule')}>Rule</button></td>
+                    <td><button style="width: 100%" class:enabled={settings.firstLine}  on:click ={() => toggleSetting('firstLine')}>First line</button></td>
+                    <td><button style="width: 100%" class:enabled={settings.color}      on:click ={() => toggleSetting('color')}>Color</button></td>
+                </tr>
+            </table>
         </div>
         <div>
             <p>Density of the first line (between 0 and 100: The ratio of alive cells)</p>
