@@ -8,7 +8,7 @@
     let p5Instance;
 
     export const dataUpdated = () => {
-        A = generateAutomaton(data.ruleNumber, data.W, data.H);
+        A = generateAutomaton(data.ruleNumber, data.W, data.H, data.firstLine);
         p5Instance.loop();
     }
 
@@ -20,7 +20,7 @@
             const canvas = p5.createCanvas(H, W);
             canvas.parent('canvasDiv');
 
-            A = generateAutomaton(data.ruleNumber, data.W, 50);
+            A = generateAutomaton(data.ruleNumber, data.W, data.H, data.firstLine);
         };
 
         // The sketch draw method

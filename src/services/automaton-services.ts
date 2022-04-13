@@ -1,7 +1,7 @@
 import type {Automaton, Line, Rules} from '../types/automaton.types';
 import {generateRulesObject, nextGeneration} from './rules-services';
 
-function generateAutomaton(ruleNumber: number, W: number, H: number): Automaton {
+function generateAutomaton(ruleNumber: number, W: number, H: number, firstLine?: boolean[]): Automaton {
     const cells: Line[] = [];
     const rules = generateRulesObject(ruleNumber);
 
@@ -12,7 +12,14 @@ function generateAutomaton(ruleNumber: number, W: number, H: number): Automaton 
         }
         cells.push(s);
     }
-    cells[0][Math.floor(W / 2)] = true;
+    if (!firstLine) {
+        cells[0][Math.floor(W / 2)] = true;
+    } else {
+        if (firstLine.length !== W) {
+            throw new Error('Something went wront the first line length and the width are different');
+        }
+        cells[0] = [...firstLine];
+    }
 
     for (let _ = 0; _ < H; _++) {
         generateNewLine(cells, rules);

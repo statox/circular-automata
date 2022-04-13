@@ -9,7 +9,9 @@ const appData: AppData = {
     ruleNumber: 90,
     W: 50,
     H: 50,
+    firstLine: new Array(50).fill(false)
 }
+appData.firstLine[Math.floor(appData.W/2)] = true;
 </script>
 
 <main>

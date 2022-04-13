@@ -22,9 +22,13 @@
             clearInterval(randomChangesTimer);
         } else {
             randomChangesTimer = setInterval(() => {
-                data.W = Math.floor(Math.random() * MAX_W);
+                data.W = Math.floor(Math.random() * MAX_W);;
                 data.H = Math.floor(Math.random() * MAX_H);
                 data.ruleNumber = Math.floor(Math.random() * 256);
+                data.firstLine = [];
+                for (let _=0; _<data.W; _++) {
+                    data.firstLine.push(Math.random() > 0.7);
+                }
                 dispatch('updateData')
             }, 3000);
         }
