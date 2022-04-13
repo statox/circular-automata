@@ -1,12 +1,15 @@
 <script lang="ts">
+    import RuleDescriptor from './RuleDescriptor.svelte';
     import { createEventDispatcher } from 'svelte'
     const dispatch = createEventDispatcher()
+
+    let ruleDescriptor;
 
     export let data: AppData;
     let ruleNumberBin;
 
     export const computeRuleToBinaryArray = () => {
-        ruleNumberBin = [...data.ruleNumber.toString(2).padStart(7, '0')].map(c => c === '1')
+        ruleNumberBin = [...data.ruleNumber.toString(2).padStart(8, '0')].map(c => c === '1')
     };
     computeRuleToBinaryArray();
 
@@ -38,8 +41,8 @@
                 {/each}
             </tr>
         </table>
-
         <br/>
+        <RuleDescriptor rule={ruleNumberBin} bind:this={ruleDescriptor} />
     </div>
 </main>
 
