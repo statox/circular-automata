@@ -12,10 +12,10 @@
     const settings = {
         W: false,
         H: false,
-        rule: false,
-        firstLine: true,
+        rule: true,
+        firstLine: false,
         interval: 3000,
-        color: false,
+        color: true,
         firstLineDensity: 50, // A percentage (0-100) of living cells on first line
         animate: false,
         automaticRandomGeneration: false
