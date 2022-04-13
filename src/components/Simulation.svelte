@@ -5,9 +5,11 @@
     export let data: AppData;
     export let type: 'square'|'circle';
     let A;
+    let p5Instance;
 
     export const dataUpdated = () => {
         A = generateAutomaton(data.ruleNumber, data.W, data.H);
+        p5Instance.loop();
     }
 
     const sketch = (p5: P5) => {
@@ -23,7 +25,7 @@
 
         // The sketch draw method
         p5.draw = () => {
-            p5.background(120, 200, 120);
+            p5.background(120, 120, 200);
             if (type === 'square') {
                 drawAutomatonAsSquare(p5, A);
             } else {
@@ -31,10 +33,11 @@
             }
 
             /* drawAutomatonInfo(p5, A); */
+            p5.noLoop();
         };
     };
 
-    new P5(sketch);
+    p5Instance = new P5(sketch);
 </script>
 
 <main>
