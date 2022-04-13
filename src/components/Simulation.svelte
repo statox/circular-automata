@@ -19,17 +19,22 @@
         p5.setup = () => {
             const canvas = p5.createCanvas(H, W);
             canvas.parent('canvasDiv');
+            p5.colorMode(p5.HSB, 360, 100, 100, 1);
 
             A = generateAutomaton(data.ruleNumber, data.W, data.H, data.firstLine);
         };
 
         // The sketch draw method
         p5.draw = () => {
-            p5.background(120, 120, 200);
+            const {background, fill} = data.colors;
+            const backgroundColor = p5.color(background.H, background.S, background.B);
+            const fillColor = p5.color(fill.H, fill.S, fill.B);
+
+            p5.background(backgroundColor);
             if (type === 'square') {
-                drawAutomatonAsSquare(p5, A);
+                drawAutomatonAsSquare(p5, A, fillColor);
             } else {
-                drawAutomatonAsCircle(p5, A);
+                drawAutomatonAsCircle(p5, A, fillColor);
             }
 
             /* drawAutomatonInfo(p5, A); */
