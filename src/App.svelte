@@ -1,6 +1,7 @@
 <script lang="ts">
 import Controls from './components/Controls.svelte';
 import Simulation from './components/Simulation.svelte';
+import {generateAutomaton} from './services/automaton-services';
 
 let simulation1;
 let simulation2;
@@ -15,9 +16,11 @@ const appData: AppData = {
         fill:  {H: 157, S: 88, B: 36},
         firstLineFill:  {H: 37, S: 88, B: 36}
     },
-    animate: true
+    automaton: null
 }
+
 appData.firstLine[Math.floor(appData.W/2)] = true;
+appData.automaton = generateAutomaton(appData.ruleNumber, appData.W, appData.H, appData.firstLine);
 
 // Once a sub component update the data, update the simulations
 const postDataUpdate = () => {

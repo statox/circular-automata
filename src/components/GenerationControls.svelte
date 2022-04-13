@@ -1,11 +1,13 @@
 <script lang="ts">
     import { createEventDispatcher } from 'svelte'
+    import {generateAutomaton, animationStep} from '../services/automaton-services';
     const dispatch = createEventDispatcher()
 
     export let data: AppData;
 
     let automaticRandomGeneration = false;
     let automaticRandomGenerationTimer;
+    let animationTimer;
 
     let settings = {
         W: false,
@@ -14,7 +16,8 @@
         firstLine: true,
         interval: 3000,
         color: false,
-        firstLineDensity: 50 // A percentage (0-100) of living cells on first line
+        firstLineDensity: 50, // A percentage (0-100) of living cells on first line
+        animate: false
     };
 
     const MAX_W = 600;
@@ -42,6 +45,13 @@
                 data.firstLine[Math.floor(Math.random()*data.firstLine.length-1)] = true;
             }
         }
+
+        // Regenerate a new automaton if one of its configuration changed
+        // No need to do it for color changes
+        if (settings.W || settings.H || settings.rule || settings.firstLine) {
+            data.automaton = generateAutomaton(data.ruleNumber, data.W, data.H, data.firstLine);
+        }
+
         if (settings.color) {
             data.colors.background.H = Math.floor(Math.random() * 360);
             data.colors.fill.H = (data.colors.background.H + 360/3) % 360;
@@ -51,6 +61,7 @@
             data.colors.fill.S = Math.floor(Math.random() * 100);
             data.colors.firstLineFill.S = Math.floor(Math.random() * 100);
         }
+
         dispatch('updateData')
     }
 
@@ -62,8 +73,23 @@
             automaticRandomGenerationTimer = setInterval(generateRandom, settings.interval);
         }
         automaticRandomGeneration = !automaticRandomGeneration;
-        document.getElementById("newGenerationBtn").style.visibility = automaticRandomGeneration ? "hidden" : "visible";
+        document.getElementById("newGenerationBtn")?.style.visibility = automaticRandomGeneration ? "hidden" : "visible";
     }
+    toggleAutomaticGeneration();
+
+    const animation = () => {
+        animationStep(data.automaton);
+        dispatch('updateData')
+    }
+    const toggleAnimation = () => {
+        if (animationTimer) {
+            clearInterval(animationTimer);
+        } else {
+            animationTimer = setInterval(animation, 50);
+        }
+        settings.animate = !settings.animate;
+    }
+    toggleAnimation();
 
     const updateInterval = () => {
         if (automaticRandomGeneration) {
@@ -93,7 +119,7 @@
             <span>Interval <input type="number" bind:value={settings.interval} id="inputInterval" on:change={updateInterval} min=1 max=10000></span>
         </div>
         <div>
-            <button id="animateGenerationBtn" on:click={() => data.animate = !data.animate}>{data.animate ? 'Stop the animation' : 'Animate the automaton'}</button>
+            <button id="animateGenerationBtn" on:click={toggleAnimation}>{settings.animate ? 'Stop the animation' : 'Animate the automaton'}</button>
             <button id="newGenerationBtn" on:click={generateRandom}>Generate a new random configuration</button>
             <button on:click={toggleAutomaticGeneration}>{automaticRandomGeneration ? 'Stop' : 'Start'} automatic random generations</button>
         </div>

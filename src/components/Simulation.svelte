@@ -4,11 +4,9 @@
     import {drawAutomatonAsSquare,drawAutomatonAsCircle,drawAutomatonInfo} from '../services/drawing-services';
     export let data: AppData;
     export let type: 'square'|'circle';
-    let A;
     let p5Instance;
 
     export const dataUpdated = () => {
-        A = generateAutomaton(data.ruleNumber, data.W, data.H, data.firstLine);
         p5Instance.loop();
     }
 
@@ -20,13 +18,12 @@
             const canvas = p5.createCanvas(H, W);
             canvas.parent('canvasDiv');
             p5.colorMode(p5.HSB, 360, 100, 100, 1);
-
-            A = generateAutomaton(data.ruleNumber, data.W, data.H, data.firstLine);
         };
 
         // The sketch draw method
         p5.draw = () => {
             const {background, fill, firstLineFill} = data.colors;
+            const A = data.automaton;
             const backgroundColor = p5.color(background.H, background.S, background.B);
             const fillColor = p5.color(fill.H, fill.S, fill.B);
             const firstLineFillColor = p5.color(firstLineFill.H, firstLineFill.S, firstLineFill.B);
@@ -39,10 +36,7 @@
             }
 
             /* drawAutomatonInfo(p5, A); */
-            /* p5.noLoop(); */
-            if (data.animate) {
-                animationStep(A);
-            }
+            p5.noLoop();
         };
     };
 

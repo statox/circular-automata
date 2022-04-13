@@ -1,3 +1,5 @@
+import type {Automaton} from './automaton.types';
+
 type Color = {
     H: number;
     S: number;
@@ -15,6 +17,7 @@ type AppData = {
         firstLineFill: Color;
     };
     animate: boolean;
+    automaton: Automaton | null;
 };
 
 export type {AppData};
