@@ -8,7 +8,6 @@
 
     export const dataUpdated = () => {
         data.automaton = generateAutomaton(data.ruleNumber, data.W, data.H, data.firstLine);
-        p5Instance.loop();
     }
 
     const sketch = (p5: P5) => {
@@ -39,8 +38,10 @@
             /* drawAutomatonInfo(p5, A); */
             if (data.animate) {
                 animationStep(data.automaton);
-            } else {
-                p5.noLoop();
+            }
+
+            if (data.fps) {
+                p5.frameRate(data.fps);
             }
         };
     };

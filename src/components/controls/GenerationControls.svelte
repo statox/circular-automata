@@ -107,7 +107,6 @@
             <span>Interval <input type="number" bind:value={settings.interval} id="inputInterval" on:change={updateInterval} min=1 max=10000></span>
         </div>
         <div>
-            <button id="animateGenerationBtn" on:click={toggleAnimation}>{data.animate ? 'Stop the animation' : 'Animate the automaton'}</button>
             <button id="newGenerationBtn" on:click={generateRandom}>Generate a new random configuration</button>
             <button on:click={toggleAutomaticGeneration}>{settings.automaticRandomGeneration ? 'Stop' : 'Start'} automatic random generations</button>
         </div>

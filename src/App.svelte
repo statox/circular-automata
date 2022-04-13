@@ -17,6 +17,7 @@ const appData: AppData = {
         firstLineFill:  {H: 37, S: 88, B: 36}
     },
     animate: true,
+    fps: 10,
     automaton: null
 }
 
