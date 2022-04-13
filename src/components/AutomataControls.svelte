@@ -9,8 +9,8 @@
 </script>
 
 <main>
-    <div id="automataControlDiv" class="center">
-        <h3>Automata controls</h3>
+    <div class="center controlSectionDiv">
+        <h3>Dimensions controls</h3>
         <div>
             <span>Line width: {data.W}</span>
             <input type=range bind:value={data.W} on:change={() => dispatch('updateData')} min=0 max={MAX_W}>
@@ -22,20 +22,4 @@
     </div>
 </main>
 
-<style>
-.center {
-    margin: auto;
-    width: 50%;
-}
-
-#automataControlDiv {
-    border: 3px solid #7878c8;
-    padding: 10px;
-    margin-bottom: 10px;
-}
-
-#ruleDigitsTable {
-    border: 3px solid #566256;
-}
-</style>
-
+<style src="./Controls.css"></style>

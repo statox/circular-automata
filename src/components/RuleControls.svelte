@@ -21,7 +21,7 @@
 </script>
 
 <main>
-    <div id="ruleControlDiv" class="center">
+    <div class="center controlSectionDiv">
         <h3>Rule controls</h3>
         <span>Rule: {data.ruleNumber}</span>
         <table id="ruleDigitsTable" class="center">
@@ -43,19 +43,4 @@
     </div>
 </main>
 
-<style>
-.center {
-    margin: auto;
-    width: 50%;
-}
-
-#ruleControlDiv {
-    border: 3px solid #7878c8;
-    padding: 10px;
-    margin-bottom: 10px;
-}
-
-#ruleDigitsTable {
-    border: 3px solid #566256;
-}
-</style>
+<style src="./Controls.css"></style>
