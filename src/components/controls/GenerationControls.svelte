@@ -42,7 +42,7 @@
                 data.firstLine.push(v);
             }
             if (!atLeastOne) {
-                data.firstLine[Math.floor(Math.random()*data.firstLine.length-1)] = true;
+                data.firstLine[Math.floor(data.firstLine.length/2)] = true;
             }
         }
 
