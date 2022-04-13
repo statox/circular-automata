@@ -1,6 +1,6 @@
 <script lang="ts">
     import { createEventDispatcher } from 'svelte'
-    import {generateAutomaton, animationStep} from '../services/automaton-services';
+    import {generateAutomaton, animationStep} from '../../services/automaton-services';
     const dispatch = createEventDispatcher()
 
     export let data: AppData;
