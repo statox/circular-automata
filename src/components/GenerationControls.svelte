@@ -9,10 +9,11 @@
 
     let settings = {
         W: false,
-        H: true,
-        rule: true,
+        H: false,
+        rule: false,
         firstLine: true,
-        interval: 3000
+        interval: 3000,
+        color: false
     };
 
     const MAX_W = 600;
@@ -33,6 +34,13 @@
             for (let _=0; _<data.W; _++) {
                 data.firstLine.push(Math.random() > 0.7);
             }
+        }
+        if (settings.color) {
+            data.colors.background.H = Math.floor(Math.random() * 360);
+            data.colors.fill.H = (data.colors.background.H + 360/2) % 360;
+
+            data.colors.background.S = Math.floor(Math.random() * 100);
+            data.colors.fill.S = Math.floor(Math.random() * 100);
         }
         dispatch('updateData')
     }
@@ -67,6 +75,7 @@
             <span>Automata height <input type="checkbox" bind:checked={settings.H} id="toggleHeight"></span>
             <span>Rule <input type="checkbox" bind:checked={settings.rule} id="toggleRule"></span>
             <span>First line <input type="checkbox" bind:checked={settings.firstLine} id="toggleFirstLine"></span>
+            <span>Color <input type="checkbox" bind:checked={settings.color} id="toggleColor"></span>
         </div>
         <div>
             <p>Interval (in ms) between two random generations</p>
