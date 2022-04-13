@@ -7,15 +7,17 @@
 
     export let data: AppData;
 
+    let ruleControls;
     const dataUpdatedInSubComponent = () => {
         data = data;
+        ruleControls?.computeRuleToBinaryArray();
         dispatch('updateData')
     }
 </script>
 
 <main>
     <h2>Controls</h2>
-    <RuleControls data={data} on:updateData={dataUpdatedInSubComponent} />
+    <RuleControls data={data} bind:this={ruleControls} on:updateData={dataUpdatedInSubComponent} />
     <DimensionsControls data={data} on:updateData={dataUpdatedInSubComponent} />
     <GenerationControls data={data} on:updateData={dataUpdatedInSubComponent} />
 </main>

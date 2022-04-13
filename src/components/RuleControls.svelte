@@ -3,21 +3,21 @@
     const dispatch = createEventDispatcher()
 
     export let data: AppData;
+    let ruleNumberBin;
 
-    const decimalToBinaryArray = (n) => {
-        return [...n.toString(2).padStart(7, '0')].map(c => c === '1')
+    export const computeRuleToBinaryArray = () => {
+        ruleNumberBin = [...data.ruleNumber.toString(2).padStart(7, '0')].map(c => c === '1')
     };
+    computeRuleToBinaryArray();
 
     const updateBit = (i, bit) => {
         ruleNumberBin[i] = !ruleNumberBin[i];
         const binString = '0b' + ruleNumberBin.map(c => c ? '1' : '0').join('');
         const dec = Number(binString);
         data.ruleNumber = dec;
-        ruleNumberBin = decimalToBinaryArray(data.ruleNumber)
+        computeRuleToBinaryArray();
         dispatch('updateData')
     }
-
-    let ruleNumberBin = decimalToBinaryArray(data.ruleNumber)
 </script>
 
 <main>
