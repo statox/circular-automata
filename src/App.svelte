@@ -1,5 +1,5 @@
 <script lang="ts">
-import Controls from './components/Controls.svelte';
+import Controls from './components/controls/Controls.svelte';
 import Simulation from './components/Simulation.svelte';
 import {generateAutomaton} from './services/automaton-services';
 

@@ -12,7 +12,7 @@
     const settings = {
         W: false,
         H: false,
-        rule: true,
+        rule: false,
         firstLine: false,
         interval: 3000,
         color: true,
