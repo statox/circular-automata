@@ -27,6 +27,7 @@ appData.automaton = generateAutomaton(appData.ruleNumber, appData.W, appData.H, 
 
 // Once a sub component update the data, update the simulations
 const postDataUpdate = () => {
+    appData = appData;
     simulation1.dataUpdated();
     simulation2.dataUpdated()
 }
