@@ -1,4 +1,5 @@
 <script lang="ts">
+    import RuleControls from './RuleControls.svelte';
     import { createEventDispatcher } from 'svelte'
     const dispatch = createEventDispatcher()
 
@@ -29,20 +30,21 @@
         randomChanges = !randomChanges;
     }
 
-    toggleRandomChanges();
+    const dataUpdatedInSubComponent = () => {
+        data = data;
+        dispatch('updateData')
+    }
 </script>
 
 <main>
+    <h2>Controls</h2>
+    <RuleControls data={data} on:updateData={dataUpdatedInSubComponent} />
     <div>
         <span>
             <button on:click={toggleRandomChanges}>Toggle random changes</button>
             <label for="enabledRandomBox">Enabled</label>
             <input type="radio" id="enabledRandomBox" checked={randomChanges}>
         </span>
-    </div>
-    <div>
-        <span>Rule: {data.ruleNumber}</span>
-        <input type=number bind:value={data.ruleNumber} on:change={() => dispatch('updateData')} min=0 max=256>
     </div>
     <div>
         <span>Line width: {data.W}</span>
