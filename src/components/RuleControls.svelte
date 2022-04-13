@@ -23,7 +23,7 @@
 <main>
     <div class="center controlSectionDiv">
         <h3>Rule controls</h3>
-        <span>Rule: {data.ruleNumber}</span>
+        <span>Rule: <input type="number" bind:value={data.ruleNumber} on:change={() => {computeRuleToBinaryArray(); dispatch('updateData')}} min=0 max=256></span>
         <table id="ruleDigitsTable" class="center">
             <tr>
                 {#each ruleNumberBin as bit, i}

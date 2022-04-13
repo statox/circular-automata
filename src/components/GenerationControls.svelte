@@ -4,11 +4,15 @@
 
     export let data: AppData;
 
+    let automaticRandomGeneration = false;
+    let automaticRandomGenerationTimer;
+
     let settings = {
         W: false,
         H: true,
         rule: true,
-        firstLine: true
+        firstLine: true,
+        interval: 3000
     };
 
     const MAX_W = 600;
@@ -32,13 +36,31 @@
         }
         dispatch('updateData')
     }
+
+    const toggleAutomaticGeneration = () => {
+        if (automaticRandomGeneration) {
+            clearInterval(automaticRandomGenerationTimer);
+        } else {
+            generateRandom();
+            automaticRandomGenerationTimer = setInterval(generateRandom, settings.interval);
+        }
+        automaticRandomGeneration = !automaticRandomGeneration;
+        document.getElementById("newGenerationBtn").style.visibility = automaticRandomGeneration ? "hidden" : "visible";
+    }
+
+    const updateInterval = () => {
+        if (automaticRandomGeneration) {
+            clearInterval(automaticRandomGenerationTimer);
+            automaticRandomGenerationTimer = setInterval(generateRandom, settings.interval);
+        }
+    }
 </script>
 
 <main>
     <div class="center controlSectionDiv">
         <h3>Generation controls</h3>
         <div>
-            <p>Select the parameters you want to change randomly</p>
+            <p>Parameters to change randomly</p>
         </div>
         <div>
             <span>Line width <input type="checkbox" bind:checked={settings.W} id="toggleLineWidth"></span>
@@ -47,10 +69,16 @@
             <span>First line <input type="checkbox" bind:checked={settings.firstLine} id="toggleFirstLine"></span>
         </div>
         <div>
-            <button on:click={generateRandom}>Generate a new random configuration</button>
+            <p>Interval (in ms) between two random generations</p>
+        </div>
+        <div>
+            <span>Interval <input type="number" bind:value={settings.interval} id="inputInterval" on:change={updateInterval} min=1 max=10000></span>
+        </div>
+        <div>
+            <button id="newGenerationBtn" on:click={generateRandom}>Generate a new random configuration</button>
+            <button on:click={toggleAutomaticGeneration}>{automaticRandomGeneration ? 'Stop' : 'Start'} automatic random generations</button>
         </div>
     </div>
 </main>
 
 <style src="./Controls.css"></style>
-
