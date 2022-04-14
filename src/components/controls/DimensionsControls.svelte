@@ -8,14 +8,24 @@
 <main>
     <div class="center controlSectionDiv">
         <h3>Dimensions controls</h3>
-        <div>
-            <span>Line width: {$automatonDimensionsStore.W}</span>
-            <input type=range bind:value={$automatonDimensionsStore.W} min=0 max={MAX_W}>
-        </div>
-        <div>
-            <span>Number of lines: {$automatonDimensionsStore.H}</span>
-            <input type=range bind:value={$automatonDimensionsStore.H} min=0 max={MAX_H}>
-        </div>
+        <table style="width: 100%">
+            <tr>
+                <td>
+                    <span>
+                        Line width: {$automatonDimensionsStore.W}
+                        <br/>
+                        <input style="width: 90%" type=range bind:value={$automatonDimensionsStore.W} min=0 max={MAX_W}>
+                    </span>
+                </td>
+                <td>
+                    <span>
+                        Number of lines: {$automatonDimensionsStore.H}
+                        <br/>
+                        <input style="width: 90%" type=range bind:value={$automatonDimensionsStore.H} min=0 max={MAX_H}>
+                    </span>
+                </td>
+            </tr>
+        </table>
     </div>
 </main>
 
