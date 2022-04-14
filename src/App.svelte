@@ -2,21 +2,11 @@
 import Controls from './components/controls/Controls.svelte';
 import GenerationControls from './components/controls/GenerationControls.svelte';
 import Simulation from './components/Simulation.svelte';
-import {generateAutomaton} from './services/automaton-services';
-import {rule} from './stores'
-
-let appData: AppData = {
-    firstLine: new Array(100).fill(false),
-}
-
-appData.firstLine[Math.floor(appData.W/2)] = true;
 </script>
 
 <main>
     <h1>Circular automata</h1>
-    <!--
-    <GenerationControls data={appData}  />
-    -->
+    <GenerationControls />
     <Simulation type='square' />
     <Simulation type='circle' />
     <Controls />

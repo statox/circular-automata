@@ -1,5 +1,5 @@
 import App from './App.svelte';
-import {writable, get} from 'svelte/store';
+import {get} from 'svelte/store';
 import {automatonStore, automatonDimensionsStore, rule} from './stores';
 import {generateAutomaton} from './services/automaton-services';
 

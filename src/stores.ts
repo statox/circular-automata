@@ -1,6 +1,11 @@
 import {writable} from 'svelte/store';
 import type {Automaton} from './types/automaton.types';
-import type {AnimationStore, AutomatonDimensionsStore, AutomatonStore} from './types/stores.types';
+import type {
+    AnimationStore,
+    AutomatonDimensionsStore,
+    AutomatonStore,
+    GenerationSettingsStore
+} from './types/stores.types';
 
 const animationStore = writable({
     play: true,
@@ -23,4 +28,10 @@ const automatonDimensionsStore = writable({
     H: 50
 } as AutomatonDimensionsStore);
 
-export {animationStore, colorStore, rule, automatonStore, automatonDimensionsStore};
+const generationSettingsStore = writable({
+    enableAutomaticGeneration: true,
+    W: true,
+    H: true
+} as GenerationSettingsStore);
+
+export {animationStore, colorStore, rule, automatonStore, automatonDimensionsStore, generationSettingsStore};

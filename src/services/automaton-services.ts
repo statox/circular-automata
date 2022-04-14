@@ -28,8 +28,6 @@ function generateAutomaton(params: {ruleNumber: number; W: number; H: number; fi
     return {cells, rules, ruleNumber, W, H};
 }
 
-function resizeAutomaton(A: Automaton): Automaton {}
-
 function animationStep(A: Automaton) {
     generateNewLine(A.cells, A.rules);
     A.cells.shift();

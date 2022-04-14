@@ -21,4 +21,10 @@ type AutomatonDimensionsStore = {
     H: number;
 };
 
-export type {AnimationStore, AutomatonStore, AutomatonDimensionsStore};
+type GenerationSettingsStore = {
+    enableAutomaticGeneration: boolean;
+    W: boolean;
+    H: boolean;
+};
+
+export type {AnimationStore, AutomatonStore, AutomatonDimensionsStore, GenerationSettingsStore};
