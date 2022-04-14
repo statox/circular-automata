@@ -55,10 +55,37 @@ button:disabled {
     color: #999;
 }
 
+button.enabled {
+    background-color: #7c98d7;
+}
+
 button:not(:disabled):active {
     background-color: #ddd;
 }
 
 button:focus {
     border-color: #666;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.width-90 {
+    width: 90%;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+}
+
+.controlSectionDiv {
+    border: 3px solid #7878c8;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#ruleDigitsTable {
+    border: 3px solid #566256;
 }
