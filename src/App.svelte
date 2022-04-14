@@ -12,11 +12,6 @@ const appData: AppData = {
     W: 100,
     H: 100,
     firstLine: new Array(100).fill(false),
-    colors: {
-        background: {H: 307, S: 87, B: 36},
-        fill:  {H: 157, S: 88, B: 36},
-        firstLineFill:  {H: 37, S: 88, B: 36}
-    },
     automaton: null
 }
 

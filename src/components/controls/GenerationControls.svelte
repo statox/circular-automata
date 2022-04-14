@@ -1,5 +1,6 @@
 <script lang="ts">
     import { createEventDispatcher } from 'svelte'
+    import {colorStore} from '../../stores';
     import {generateAutomaton, animationStep} from '../../services/automaton-services';
     const dispatch = createEventDispatcher()
 
@@ -53,13 +54,13 @@
         }
 
         if (settings.color) {
-            data.colors.background.H = Math.random() * 360;
-            data.colors.fill.H = (data.colors.background.H + 360/3) % 360;
-            data.colors.firstLineFill.H = (data.colors.background.H - 360/3) % 360;
+            $colorStore.background.H = Math.random() * 360;
+            $colorStore.fill.H = ($colorStore.background.H + 360/3) % 360;
+            $colorStore.firstLineFill.H = ($colorStore.background.H - 360/3) % 360;
 
-            data.colors.background.S = 40 + Math.floor(Math.random() * 60);
-            data.colors.fill.S = 40 + Math.floor(Math.random() * 60);
-            data.colors.firstLineFill.S = 40 + Math.floor(Math.random() * 60);
+            $colorStore.background.S = 40 + Math.floor(Math.random() * 60);
+            $colorStore.fill.S = 40 + Math.floor(Math.random() * 60);
+            $colorStore.firstLineFill.S = 40 + Math.floor(Math.random() * 60);
         }
 
     }

@@ -11,12 +11,7 @@ type AppData = {
     W: number;
     H: number;
     firstLine: boolean[];
-    colors?: {
-        background: Color;
-        fill: Color;
-        firstLineFill: Color;
-    };
     automaton: Automaton | null;
 };
 
-export type {AppData};
+export type {AppData, Color};

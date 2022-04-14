@@ -1,6 +1,6 @@
 <script lang="ts">
     import P5 from 'p5';
-    import {animationStore} from '../stores';
+    import {animationStore, colorStore} from '../stores';
     import { onDestroy } from 'svelte'
     import {generateAutomaton, animationStep} from '../services/automaton-services.ts';
     import {drawAutomatonAsSquare,drawAutomatonAsCircle,drawAutomatonInfo} from '../services/drawing-services';
@@ -24,7 +24,7 @@
 
         // The sketch draw method
         p5.draw = () => {
-            const {background, fill, firstLineFill} = data.colors;
+            const {background, fill, firstLineFill} = $colorStore;
             const A = data.automaton;
             const backgroundColor = p5.color(background.H, background.S, background.B);
             const fillColor = p5.color(fill.H, fill.S, fill.B);
