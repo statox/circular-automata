@@ -1,40 +1,13 @@
 <script lang="ts">
-    import {automatonDimensionsStore, generationSettingsStore, automatonStore, colorStore, rule} from '../../stores';
+    import {automatonDimensionsStore, generationControlsStore, generationSettingsStore, automatonStore, colorStore, rule} from '../../stores';
     import {updateAppWithRandomAutomaton} from '../../services/generation-services';
-
-    const timers = {
-        automaticRandomGenerationTimer: null,
-    }
 
     const generateRandom = () => {
         updateAppWithRandomAutomaton();
     }
 
-    const toggleAutomaticGeneration = () => {
-        /*
-         * if (settings.automaticRandomGeneration) {
-         *     clearInterval(timers.automaticRandomGenerationTimer);
-         * } else {
-         *     generateRandom();
-         *     timers.automaticRandomGenerationTimer = setInterval(generateRandom, settings.interval);
-         * }
-         * settings.automaticRandomGeneration = !settings.automaticRandomGeneration;
-         * document.getElementById("newGenerationBtn")?.style.visibility = settings.automaticRandomGeneration ? "hidden" : "visible";
-         */
-    }
-    toggleAutomaticGeneration();
-
     const toggleSetting = (setting) => {
         $generationSettingsStore[setting] = !$generationSettingsStore[setting]
-    }
-
-    const updateInterval = () => {
-        /*
-         * if (settings.automaticRandomGeneration) {
-         *     clearInterval(timers.automaticRandomGenerationTimer);
-         *     timers.automaticRandomGenerationTimer = setInterval(generateRandom, settings.interval);
-         * }
-         */
     }
 </script>
 
@@ -65,7 +38,7 @@
         -->
         <div>
             <button id="newGenerationBtn" on:click={generateRandom}>Generate a new random configuration</button>
-            <button on:click={() => toggleSetting('enableAutomaticGeneration')}>{$generationSettingsStore.enableAutomaticGeneration ? 'Stop' : 'Start'} automatic random generations</button>
+            <button on:click={() => $generationControlsStore.enableAutomaticGeneration = !$generationControlsStore.enableAutomaticGeneration}>{$generationControlsStore.enableAutomaticGeneration ? 'Stop' : 'Start'} automatic random generations</button>
         </div>
     </div>
 </main>

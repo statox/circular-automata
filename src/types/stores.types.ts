@@ -32,7 +32,6 @@ type GenerationSettingsStore = {
 
 type GenerationControlsStore = {
     enableAutomaticGeneration: boolean;
-    timer: number;
 };
 
 export type {

@@ -2,6 +2,7 @@ import App from './App.svelte';
 import {get} from 'svelte/store';
 import {automatonStore, automatonDimensionsStore, generationControlsStore, rule} from './stores';
 import {generateAutomaton} from './services/automaton-services';
+import {updateAppWithRandomAutomaton} from './services/generation-services';
 
 const app = new App({
     target: document.body,
@@ -44,9 +45,14 @@ automatonDimensionsStore.subscribe((newSettings) => {
     automatonStore.set({A: newAutomaton});
 });
 
+let updateTimer: NodeJS.Timer;
 generationControlsStore.subscribe((newControls) => {
-    console.log('controls updated');
-    console.log(newControls);
+    if (updateTimer) {
+        clearInterval(updateTimer);
+    }
+    if (newControls.enableAutomaticGeneration) {
+        updateTimer = setInterval(updateAppWithRandomAutomaton, 3000);
+    }
 });
 
 export default app;
