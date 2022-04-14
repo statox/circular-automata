@@ -3,35 +3,25 @@ import Controls from './components/controls/Controls.svelte';
 import GenerationControls from './components/controls/GenerationControls.svelte';
 import Simulation from './components/Simulation.svelte';
 import {generateAutomaton} from './services/automaton-services';
+import {rule} from './stores'
 
-let simulation1;
-let simulation2;
-
-const appData: AppData = {
-    ruleNumber: 90,
+let appData: AppData = {
     W: 100,
     H: 100,
     firstLine: new Array(100).fill(false),
-    automaton: null
 }
 
 appData.firstLine[Math.floor(appData.W/2)] = true;
-appData.automaton = generateAutomaton(appData);
-
-// Once a sub component update the data, update the simulations
-const postDataUpdate = () => {
-    appData = appData;
-    simulation1.dataUpdated();
-    simulation2.dataUpdated()
-}
 </script>
 
 <main>
     <h1>Circular automata</h1>
-    <GenerationControls data={appData} on:updateData={postDataUpdate} />
-    <Simulation type='square' data={appData} bind:this={simulation1} />
-    <Simulation type='cirle' data={appData} bind:this={simulation2} />
-    <Controls data={appData} on:updateData={postDataUpdate} />
+    <!--
+    <GenerationControls data={appData}  />
+    -->
+    <Simulation type='square' />
+    <Simulation type='circle' />
+    <Controls data={appData}  />
 </main>
 
 <style>

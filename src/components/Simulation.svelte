@@ -1,16 +1,10 @@
 <script lang="ts">
     import P5 from 'p5';
-    import {animationStore, colorStore} from '../stores';
-    import { onDestroy } from 'svelte'
-    import {generateAutomaton, animationStep} from '../services/automaton-services.ts';
+    import {animationStore, colorStore, automatonStore} from '../stores';
+    import {animationStep} from '../services/automaton-services';
     import {drawAutomatonAsSquare,drawAutomatonAsCircle,drawAutomatonInfo} from '../services/drawing-services';
-    export let data: AppData;
     export let type: 'square'|'circle';
     let p5Instance;
-
-    export const dataUpdated = () => {
-        data.automaton = generateAutomaton(data);
-    }
 
     const sketch = (p5: P5) => {
         const H = 700;
@@ -25,21 +19,20 @@
         // The sketch draw method
         p5.draw = () => {
             const {background, fill, firstLineFill} = $colorStore;
-            const A = data.automaton;
             const backgroundColor = p5.color(background.H, background.S, background.B);
             const fillColor = p5.color(fill.H, fill.S, fill.B);
             const firstLineFillColor = p5.color(firstLineFill.H, firstLineFill.S, firstLineFill.B);
 
             p5.background(backgroundColor);
             if (type === 'square') {
-                drawAutomatonAsSquare(p5, A, {fillColor, firstLineFillColor});
+                drawAutomatonAsSquare(p5, $automatonStore.A, {fillColor, firstLineFillColor});
             } else {
-                drawAutomatonAsCircle(p5, A, {fillColor, firstLineFillColor});
+                drawAutomatonAsCircle(p5, $automatonStore.A, {fillColor, firstLineFillColor});
             }
 
-            /* drawAutomatonInfo(p5, A); */
+            /* drawAutomatonInfo(p5, $automatonStore.A); */
             if ($animationStore.play) {
-                animationStep(data.automaton);
+                animationStep($automatonStore.A);
             }
 
             p5.frameRate($animationStore.fps);

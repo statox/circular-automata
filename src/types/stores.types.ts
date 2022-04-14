@@ -1,3 +1,4 @@
+import type {Automaton} from './automaton.types';
 import type {Color} from './data.types';
 
 type AnimationStore = {
@@ -11,4 +12,8 @@ type ColorStore = {
     firstLineFill: Color;
 };
 
-export type {AnimationStore};
+type AutomatonStore = {
+    A: Automaton;
+};
+
+export type {AnimationStore, AutomatonStore};
