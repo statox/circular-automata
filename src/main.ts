@@ -51,7 +51,7 @@ generationControlsStore.subscribe((newControls) => {
         clearInterval(updateTimer);
     }
     if (newControls.enableAutomaticGeneration) {
-        updateTimer = setInterval(updateAppWithRandomAutomaton, 3000);
+        updateTimer = setInterval(updateAppWithRandomAutomaton, newControls.interval);
     }
 });
 

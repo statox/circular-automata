@@ -40,7 +40,8 @@ const generationSettingsStore = writable({
 } as GenerationSettingsStore);
 
 const generationControlsStore = writable({
-    enableAutomaticGeneration: true
+    enableAutomaticGeneration: true,
+    interval: 1000
 } as GenerationControlsStore);
 
 export {

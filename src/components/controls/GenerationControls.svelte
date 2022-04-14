@@ -30,15 +30,15 @@
             <p>Density of the first line (between 0 and 100: The ratio of alive cells)</p>
             <span>Density <input type="number" bind:value={$generationSettingsStore.firstLineDensity} id="inputDensity" min=0 max=100></span>
         </div>
-        <!--
         <div>
             <p>Interval (in ms) between two random generations</p>
-            <span>Interval <input type="number" bind:value={settings.interval} id="inputInterval" on:change={updateInterval} min=1 max=10000></span>
+            <span>Interval <input type="number" bind:value={$generationControlsStore.interval} id="inputInterval" min=1 max=100></span>
         </div>
-        -->
         <div>
             <button id="newGenerationBtn" on:click={generateRandom}>Generate a new random configuration</button>
-            <button on:click={() => $generationControlsStore.enableAutomaticGeneration = !$generationControlsStore.enableAutomaticGeneration}>{$generationControlsStore.enableAutomaticGeneration ? 'Stop' : 'Start'} automatic random generations</button>
+            <button on:click={() => $generationControlsStore.enableAutomaticGeneration = !$generationControlsStore.enableAutomaticGeneration}>
+                {$generationControlsStore.enableAutomaticGeneration ? 'Stop' : 'Start'} automatic random generations
+            </button>
         </div>
     </div>
 </main>

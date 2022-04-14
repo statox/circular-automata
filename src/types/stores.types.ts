@@ -32,6 +32,7 @@ type GenerationSettingsStore = {
 
 type GenerationControlsStore = {
     enableAutomaticGeneration: boolean;
+    interval: number; // Time in milliseconds between each random generation
 };
 
 export type {
