@@ -7,9 +7,6 @@ type Color = {
 };
 
 type AppData = {
-    ruleNumber: number;
-    W: number;
-    H: number;
     firstLine: boolean[];
 };
 

@@ -16,4 +16,9 @@ type AutomatonStore = {
     A: Automaton;
 };
 
-export type {AnimationStore, AutomatonStore};
+type AutomatonSettingsStore = {
+    W: number;
+    H: number;
+};
+
+export type {AnimationStore, AutomatonStore, AutomatonSettingsStore};

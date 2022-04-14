@@ -1,6 +1,5 @@
 import type {Automaton, Line, Rules} from '../types/automaton.types';
 import {generateRulesObject, nextGeneration} from './rules-services';
-import {automatonStore} from '../stores';
 
 function generateAutomaton(params: {ruleNumber: number; W: number; H: number; firstLine?: boolean[]}): Automaton {
     const {ruleNumber, W, H, firstLine} = params;
@@ -28,6 +27,8 @@ function generateAutomaton(params: {ruleNumber: number; W: number; H: number; fi
     }
     return {cells, rules, ruleNumber, W, H};
 }
+
+function resizeAutomaton(A: Automaton): Automaton {}
 
 function animationStep(A: Automaton) {
     generateNewLine(A.cells, A.rules);

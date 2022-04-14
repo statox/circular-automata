@@ -6,8 +6,6 @@ import {generateAutomaton} from './services/automaton-services';
 import {rule} from './stores'
 
 let appData: AppData = {
-    W: 100,
-    H: 100,
     firstLine: new Array(100).fill(false),
 }
 
