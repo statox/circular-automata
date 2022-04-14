@@ -1,5 +1,5 @@
 import type {Automaton} from '../types/automaton.types';
-import type {GenerationSettingsStore} from '../types/stores.types';
+import type {GenerationSettingsStore, ColorStore} from '../types/stores.types';
 import {generateAutomaton} from './automaton-services';
 
 const MAX_W = 600;
@@ -20,7 +20,36 @@ function getRandomAutomaton(params: {currentAutomaton: Automaton; generationSett
         H = Math.floor(Math.random() * MAX_H);
     }
 
+    if (generationSettings.rule) {
+        ruleNumber = Math.floor(Math.random() * 256);
+    }
+
+    if (generationSettings.firstLine) {
+        firstLine = new Array(W).fill(false);
+        firstLine[Math.floor(firstLine.length / 2)] = true;
+    }
+
     return generateAutomaton({ruleNumber, W, H, firstLine});
 }
 
-export {getRandomAutomaton};
+function getRandomColors(): ColorStore {
+    const background = {H: 0, S: 0, B: 0};
+    const fill = {H: 0, S: 0, B: 0};
+    const firstLineFill = {H: 0, S: 0, B: 0};
+
+    background.H = Math.random() * 360;
+    fill.H = (background.H + 360 / 3) % 360;
+    firstLineFill.H = (background.H - 360 / 3) % 360;
+
+    background.S = 40 + Math.floor(Math.random() * 60);
+    fill.S = 40 + Math.floor(Math.random() * 60);
+    firstLineFill.S = 40 + Math.floor(Math.random() * 60);
+
+    background.B = 40;
+    fill.B = 40;
+    firstLineFill.B = 40;
+
+    return {background, fill, firstLineFill};
+}
+
+export {getRandomAutomaton, getRandomColors};

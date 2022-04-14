@@ -25,6 +25,9 @@ type GenerationSettingsStore = {
     enableAutomaticGeneration: boolean;
     W: boolean;
     H: boolean;
+    rule: boolean;
+    firstLine: boolean;
+    color: boolean;
 };
 
-export type {AnimationStore, AutomatonStore, AutomatonDimensionsStore, GenerationSettingsStore};
+export type {AnimationStore, AutomatonStore, AutomatonDimensionsStore, ColorStore, GenerationSettingsStore};

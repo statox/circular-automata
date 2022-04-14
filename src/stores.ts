@@ -4,6 +4,7 @@ import type {
     AnimationStore,
     AutomatonDimensionsStore,
     AutomatonStore,
+    ColorStore,
     GenerationSettingsStore
 } from './types/stores.types';
 
@@ -16,7 +17,7 @@ const colorStore = writable({
     background: {H: 307, S: 87, B: 36},
     fill: {H: 157, S: 88, B: 36},
     firstLineFill: {H: 37, S: 88, B: 36}
-});
+} as ColorStore);
 
 const rule = writable(110);
 const automatonStore = writable({
@@ -31,7 +32,10 @@ const automatonDimensionsStore = writable({
 const generationSettingsStore = writable({
     enableAutomaticGeneration: true,
     W: true,
-    H: true
+    H: true,
+    rule: true,
+    firstLine: true,
+    color: true
 } as GenerationSettingsStore);
 
 export {animationStore, colorStore, rule, automatonStore, automatonDimensionsStore, generationSettingsStore};

@@ -1,6 +1,6 @@
 <script lang="ts">
-    import {automatonDimensionsStore, generationSettingsStore, automatonStore} from '../../stores';
-    import {getRandomAutomaton} from '../../services/generation-services';
+    import {automatonDimensionsStore, generationSettingsStore, automatonStore, colorStore, rule} from '../../stores';
+    import {getRandomAutomaton,getRandomColors} from '../../services/generation-services';
 
     const timers = {
         automaticRandomGenerationTimer: null,
@@ -14,7 +14,13 @@
         const newAutomaton = getRandomAutomaton({currentAutomaton: $automatonStore.A, generationSettings: $generationSettingsStore});
         $automatonDimensionsStore.W = newAutomaton.W;
         $automatonDimensionsStore.H = newAutomaton.H;
+        $rule = newAutomaton.ruleNumber;
         $automatonStore.A = newAutomaton;
+
+        if ($generationSettingsStore.color) {
+            $colorStore = getRandomColors();
+        }
+
 /*
  *         if (settings.W) {
  *             data.W = Math.floor(Math.random() * MAX_W);;
@@ -73,8 +79,6 @@
 
     const toggleSetting = (setting) => {
         $generationSettingsStore[setting] = !$generationSettingsStore[setting]
-        console.log('settings updated');
-        console.log($generationSettingsStore);
     }
 
     const updateInterval = () => {
@@ -94,13 +98,11 @@
             <p>Parameters to change randomly</p>
             <table style="width: 100%">
                 <tr>
-                    <td><button style="width: 100%" class:enabled={$generationSettingsStore.W} on:click ={() => toggleSetting('W')}>Line width</button></td>
-                    <td><button style="width: 100%" class:enabled={$generationSettingsStore.H} on:click ={() => toggleSetting('H')}>Automata height</button></td>
-                    <!--
-                    <td><button style="width: 100%" class:enabled={settings.rule}       on:click ={() => toggleSetting('rule')}>Rule</button></td>
-                    <td><button style="width: 100%" class:enabled={settings.firstLine}  on:click ={() => toggleSetting('firstLine')}>First line</button></td>
-                    <td><button style="width: 100%" class:enabled={settings.color}      on:click ={() => toggleSetting('color')}>Color</button></td>
-                    -->
+                    <td><button style="width: 100%" class:enabled={$generationSettingsStore.W}         on:click ={() => toggleSetting('W')}>Line width</button></td>
+                    <td><button style="width: 100%" class:enabled={$generationSettingsStore.H}         on:click ={() => toggleSetting('H')}>Automata height</button></td>
+                    <td><button style="width: 100%" class:enabled={$generationSettingsStore.rule}      on:click ={() => toggleSetting('rule')}>Rule</button></td>
+                    <td><button style="width: 100%" class:enabled={$generationSettingsStore.firstLine} on:click ={() => toggleSetting('firstLine')}>First line</button></td>
+                    <td><button style="width: 100%" class:enabled={$generationSettingsStore.color}     on:click ={() => toggleSetting('color')}>Color</button></td>
                 </tr>
             </table>
         </div>
@@ -112,10 +114,6 @@
         <div>
             <p>Interval (in ms) between two random generations</p>
             <span>Interval <input type="number" bind:value={settings.interval} id="inputInterval" on:change={updateInterval} min=1 max=10000></span>
-        </div>
-        <div>
-            <button id="newGenerationBtn" on:click={generateRandom}>Generate a new random configuration</button>
-            <button on:click={toggleAutomaticGeneration}>{settings.automaticRandomGeneration ? 'Stop' : 'Start'} automatic random generations</button>
         </div>
         -->
         <div>
