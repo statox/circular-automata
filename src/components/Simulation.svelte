@@ -1,5 +1,7 @@
 <script lang="ts">
     import P5 from 'p5';
+    import {animationStore} from '../stores';
+    import { onDestroy } from 'svelte'
     import {generateAutomaton, animationStep} from '../services/automaton-services.ts';
     import {drawAutomatonAsSquare,drawAutomatonAsCircle,drawAutomatonInfo} from '../services/drawing-services';
     export let data: AppData;
@@ -36,13 +38,11 @@
             }
 
             /* drawAutomatonInfo(p5, A); */
-            if (data.animate) {
+            if ($animationStore.play) {
                 animationStep(data.automaton);
             }
 
-            if (data.fps) {
-                p5.frameRate(data.fps);
-            }
+            p5.frameRate($animationStore.fps);
         };
     };
 

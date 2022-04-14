@@ -1,12 +1,11 @@
 <script lang="ts">
-    import { createEventDispatcher } from 'svelte'
-    import {generateAutomaton, animationStep} from '../../services/automaton-services';
-    const dispatch = createEventDispatcher()
-
-    export let data: AppData;
+    import {animationStore} from '../../stores';
 
     const toggleAnimation = () => {
-        data.animate = !data.animate;
+        $animationStore = {
+            ...$animationStore,
+            play: !$animationStore.play
+        };
     }
 </script>
 
@@ -14,10 +13,10 @@
     <div class="center controlSectionDiv">
         <h3>Animation controls</h3>
         <div>
-            <button id="animateGenerationBtn" on:click={toggleAnimation}>{data.animate ? 'Stop the animation' : 'Animate the automaton'}</button>
+            <button id="animateGenerationBtn" on:click={toggleAnimation}>{$animationStore.play ? 'Stop the animation' : 'Animate the automaton'}</button>
 
-            <span>FPS: {data.fps}</span>
-            <input type=range bind:value={data.fps} min=0 max=60>
+            <span>FPS: {$animationStore.fps}</span>
+            <input type=range bind:value={$animationStore.fps} min=0 max=60>
         </div>
     </div>
 </main>

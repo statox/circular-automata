@@ -14,7 +14,7 @@
         H: false,
         rule: false,
         firstLine: false,
-        interval: 6000,
+        interval: 3000,
         color: true,
         firstLineDensity: 50, // A percentage (0-100) of living cells on first line
         automaticRandomGeneration: false

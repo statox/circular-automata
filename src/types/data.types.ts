@@ -16,8 +16,6 @@ type AppData = {
         fill: Color;
         firstLineFill: Color;
     };
-    animate: boolean;
-    fps: number;
     automaton: Automaton | null;
 };
 
