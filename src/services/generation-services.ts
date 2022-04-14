@@ -33,7 +33,7 @@ function getRandomAutomaton(params: {currentAutomaton: Automaton; generationSett
         ruleNumber = Math.floor(Math.random() * 256);
     }
 
-    if (generationSettings.firstLine || W !== firstLine.length) {
+    if (generationSettings.firstLine || W !== firstLine?.length) {
         firstLine = [];
         let atLeastOne = false;
         for (let i = 0; i < W; i++) {
