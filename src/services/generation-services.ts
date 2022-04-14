@@ -25,8 +25,18 @@ function getRandomAutomaton(params: {currentAutomaton: Automaton; generationSett
     }
 
     if (generationSettings.firstLine) {
-        firstLine = new Array(W).fill(false);
-        firstLine[Math.floor(firstLine.length / 2)] = true;
+        firstLine = [];
+        let atLeastOne = false;
+        for (let i = 0; i < W; i++) {
+            const alive = Math.random() < generationSettings.firstLineDensity / 100;
+            firstLine.push(alive);
+            if (alive) {
+                atLeastOne = true;
+            }
+        }
+        if (!atLeastOne) {
+            firstLine[Math.floor(firstLine.length / 2)] = true;
+        }
     }
 
     return generateAutomaton({ruleNumber, W, H, firstLine});

@@ -9,7 +9,7 @@ import type {
 } from './types/stores.types';
 
 const animationStore = writable({
-    play: true,
+    play: false,
     fps: 20
 } as AnimationStore);
 
@@ -31,11 +31,12 @@ const automatonDimensionsStore = writable({
 
 const generationSettingsStore = writable({
     enableAutomaticGeneration: true,
-    W: true,
-    H: true,
+    W: false,
+    H: false,
     rule: true,
     firstLine: true,
-    color: true
+    color: true,
+    firstLineDensity: 50
 } as GenerationSettingsStore);
 
 export {animationStore, colorStore, rule, automatonStore, automatonDimensionsStore, generationSettingsStore};

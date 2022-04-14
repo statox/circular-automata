@@ -106,11 +106,11 @@
                 </tr>
             </table>
         </div>
-        <!--
         <div>
             <p>Density of the first line (between 0 and 100: The ratio of alive cells)</p>
-            <span>Density <input type="number" bind:value={settings.firstLineDensity} id="inputDensity" min=0 max=100></span>
+            <span>Density <input type="number" bind:value={$generationSettingsStore.firstLineDensity} id="inputDensity" min=0 max=100></span>
         </div>
+        <!--
         <div>
             <p>Interval (in ms) between two random generations</p>
             <span>Interval <input type="number" bind:value={settings.interval} id="inputInterval" on:change={updateInterval} min=1 max=10000></span>

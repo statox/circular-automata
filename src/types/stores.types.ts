@@ -28,6 +28,7 @@ type GenerationSettingsStore = {
     rule: boolean;
     firstLine: boolean;
     color: boolean;
+    firstLineDensity: number; // Percentage of alive cells in new first lines (0-100)
 };
 
 export type {AnimationStore, AutomatonStore, AutomatonDimensionsStore, ColorStore, GenerationSettingsStore};
