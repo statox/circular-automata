@@ -3,8 +3,6 @@
     import RuleDescriptor from './RuleDescriptor.svelte';
     import {rule} from '../../stores';
 
-    /* let ruleDescriptor; */
-
     export const computeRuleToBinaryArray = (r) => {
         return [...r.toString(2).padStart(8, '0')].map(c => c === '1')
     };
@@ -37,10 +35,8 @@
                 {/each}
             </tr>
         </table>
-        <!--
         <br/>
-        <RuleDescriptor rule={ruleNumberBin} bind:this={ruleDescriptor} />
-        -->
+        <RuleDescriptor rule={computeRuleToBinaryArray($rule)}/>
     </div>
 </main>
 

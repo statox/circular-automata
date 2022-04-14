@@ -1,10 +1,5 @@
 <script lang="ts">
     export let rule: boolean[];
-
-    export const refresh = () => {
-        console.log('refresh descriptor');
-        rule = rule;
-    }
 </script>
 
 <main>
