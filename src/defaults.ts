@@ -9,7 +9,7 @@ import type {
 
 const defaultAnimationStore: AnimationStore = {
     play: true,
-    fps: 30
+    fps: 20
 };
 
 const defaultAutomatonDimensionsStore: AutomatonDimensionsStore = {
