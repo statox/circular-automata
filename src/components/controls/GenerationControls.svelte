@@ -28,18 +28,30 @@
             </table>
         </div>
         <div>
-            <p>Density of the first line (between 0 and 100: The ratio of alive cells)</p>
-            <span>Density <input type="number" bind:value={$generationSettingsStore.firstLineDensity} id="inputDensity" min=0 max=100></span>
+            <table class="full-width">
+                <tr>
+                    <td><p>Density of the first line (between 0 and 100: The ratio of alive cells)</p></td>
+                    <td><p>Interval (in ms) between two random generations</p></td>
+                </tr>
+                <tr>
+                    <td><span>Density <input type="number" bind:value={$generationSettingsStore.firstLineDensity} id="inputDensity" min=0 max=100></span></td>
+                    <td><span>Interval <input type="number" bind:value={$generationControlsStore.interval} id="inputInterval" min=1 max=100></span></td>
+                </tr>
+            </table>
         </div>
         <div>
-            <p>Interval (in ms) between two random generations</p>
-            <span>Interval <input type="number" bind:value={$generationControlsStore.interval} id="inputInterval" min=1 max=100></span>
         </div>
         <div>
-            <button id="newGenerationBtn" on:click={generateRandom}>Generate a new random configuration</button>
-            <button on:click={() => $generationControlsStore.enableAutomaticGeneration = !$generationControlsStore.enableAutomaticGeneration}>
-                {$generationControlsStore.enableAutomaticGeneration ? 'Stop' : 'Start'} automatic random generations
-            </button>
+            <table class="full-width">
+                <tr>
+                    <td><button class="width-90" id="newGenerationBtn" on:click={generateRandom}>Generate a new random configuration</button></td>
+                    <td>
+                        <button class="width-90" on:click={() => $generationControlsStore.enableAutomaticGeneration = !$generationControlsStore.enableAutomaticGeneration}>
+                            {$generationControlsStore.enableAutomaticGeneration ? 'Stop' : 'Start'} automatic random generations
+                        </button>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
 </main>
