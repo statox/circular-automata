@@ -67,6 +67,13 @@ button:focus {
     border-color: #666;
 }
 
+.full-width {
+    width: 100%;
+}
+
+.width-90 {
+    width: 90%;
+}
 
 .center {
     margin: auto;

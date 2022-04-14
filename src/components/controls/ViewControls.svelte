@@ -15,12 +15,12 @@
         <h3>Views controls</h3>
         <div>
             <p>Select views to show</p>
-            <table style="width: 100%">
+            <table class="full-width">
                 <tr>
                     {#each viewOptions as option}
                         <td>
                             <button
-                                style="width: 100%"
+                                class='width-90'
                                 class:enabled={$viewStore[option]}
                                 on:click ={() => toggleSetting(option)}>
                                 {option}

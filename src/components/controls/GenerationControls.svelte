@@ -17,13 +17,13 @@
         <h3>Generation controls</h3>
         <div>
             <p>Parameters to change randomly</p>
-            <table style="width: 100%">
+            <table class="full-width">
                 <tr>
-                    <td><button style="width: 100%" class:enabled={$generationSettingsStore.W}         on:click ={() => toggleSetting('W')}>Line width</button></td>
-                    <td><button style="width: 100%" class:enabled={$generationSettingsStore.H}         on:click ={() => toggleSetting('H')}>Automata height</button></td>
-                    <td><button style="width: 100%" class:enabled={$generationSettingsStore.rule}      on:click ={() => toggleSetting('rule')}>Rule</button></td>
-                    <td><button style="width: 100%" class:enabled={$generationSettingsStore.firstLine} on:click ={() => toggleSetting('firstLine')}>First line</button></td>
-                    <td><button style="width: 100%" class:enabled={$generationSettingsStore.color}     on:click ={() => toggleSetting('color')}>Color</button></td>
+                    <td><button class="width-90" class:enabled={$generationSettingsStore.W}         on:click ={() => toggleSetting('W')}>Line width</button></td>
+                    <td><button class="width-90" class:enabled={$generationSettingsStore.H}         on:click ={() => toggleSetting('H')}>Automata height</button></td>
+                    <td><button class="width-90" class:enabled={$generationSettingsStore.rule}      on:click ={() => toggleSetting('rule')}>Rule</button></td>
+                    <td><button class="width-90" class:enabled={$generationSettingsStore.firstLine} on:click ={() => toggleSetting('firstLine')}>First line</button></td>
+                    <td><button class="width-90" class:enabled={$generationSettingsStore.color}     on:click ={() => toggleSetting('color')}>Color</button></td>
                 </tr>
             </table>
         </div>
