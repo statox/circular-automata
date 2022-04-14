@@ -13,10 +13,6 @@ type ColorStore = {
     firstLineFill: Color;
 };
 
-type AutomatonStore = {
-    A: Automaton;
-};
-
 type AutomatonDimensionsStore = {
     W: number;
     H: number;
@@ -47,7 +43,6 @@ type ViewsStore = {
 
 export type {
     AnimationStore,
-    AutomatonStore,
     AutomatonDimensionsStore,
     ColorStore,
     GenerationSettingsStore,

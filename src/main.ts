@@ -19,7 +19,7 @@ const app = new App({
 // Initialize the automaton in the store then use it in updateAppWithRandomAutomaton()
 // to make a random first state
 const newAutomaton = generateAutomaton({ruleNumber: 110, W: 50, H: 50});
-automatonStore.set({A: newAutomaton});
+automatonStore.set(newAutomaton);
 updateAppWithRandomAutomaton();
 colorStore.set(getRandomColors());
 
@@ -28,20 +28,20 @@ colorStore.set(getRandomColors());
  */
 
 rule.subscribe((value) => {
-    const currentAutomaton = get(automatonStore).A;
+    const currentAutomaton = get(automatonStore);
     const newAutomaton = generateAutomaton({
         ruleNumber: value,
         W: currentAutomaton.W,
         H: currentAutomaton.H,
         firstLine: [...currentAutomaton.cells[0]]
     });
-    automatonStore.set({A: newAutomaton});
+    automatonStore.set(newAutomaton);
 });
 
 automatonDimensionsStore.subscribe((newSettings) => {
     const {W, H} = newSettings;
 
-    const currentAutomaton = get(automatonStore).A;
+    const currentAutomaton = get(automatonStore);
     const firstLine = [...currentAutomaton.cells[0]];
 
     let cnt = 0;
@@ -63,7 +63,7 @@ automatonDimensionsStore.subscribe((newSettings) => {
     }
 
     const newAutomaton = generateAutomaton({ruleNumber: currentAutomaton.ruleNumber, W, H, firstLine});
-    automatonStore.set({A: newAutomaton});
+    automatonStore.set(newAutomaton);
 });
 
 let updateTimer: NodeJS.Timer;
@@ -87,7 +87,7 @@ animationStore.subscribe((newControls) => {
         }
         const interval = 1000 / newControls.fps;
         animationTimer = setInterval(() => {
-            animationStep(get(automatonStore).A);
+            animationStep(get(automatonStore));
         }, interval);
     }
 });

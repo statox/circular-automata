@@ -27,11 +27,11 @@
 
             p5.background(backgroundColor);
             if (type === 'square') {
-                drawAutomatonAsSquare(p5, $automatonStore.A, {fillColor, firstLineFillColor});
+                drawAutomatonAsSquare(p5, $automatonStore, {fillColor, firstLineFillColor});
             } else if (type === 'circle') {
-                drawAutomatonAsCircle(p5, $automatonStore.A, {fillColor, firstLineFillColor});
+                drawAutomatonAsCircle(p5, $automatonStore, {fillColor, firstLineFillColor});
             } else if (type === 'circle_inv') {
-                drawAutomatonAsCircleInversed(p5, $automatonStore.A, {fillColor, firstLineFillColor})
+                drawAutomatonAsCircleInversed(p5, $automatonStore, {fillColor, firstLineFillColor})
             }
 
             p5.frameRate($animationStore.fps);

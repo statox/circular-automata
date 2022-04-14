@@ -72,7 +72,7 @@ function getRandomColors(): ColorStore {
 }
 
 function updateAppWithRandomAutomaton() {
-    const currentAutomaton = get(automatonStore).A;
+    const currentAutomaton = get(automatonStore);
     const generationSettings = get(generationSettingsStore);
 
     const newAutomaton = getRandomAutomaton({
@@ -81,7 +81,7 @@ function updateAppWithRandomAutomaton() {
     });
     automatonDimensionsStore.set({W: newAutomaton.W, H: newAutomaton.H});
     rule.set(newAutomaton.ruleNumber);
-    automatonStore.set({A: newAutomaton});
+    automatonStore.set(newAutomaton);
 
     if (generationSettings.color) {
         colorStore.set(getRandomColors());
