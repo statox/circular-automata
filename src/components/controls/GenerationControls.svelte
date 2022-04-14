@@ -3,6 +3,7 @@
     import {updateAppWithRandomAutomaton} from '../../services/generation-services';
 
     const generateRandom = () => {
+        $generationControlsStore.lastReset = $generationControlsStore.lastReset+1;
         updateAppWithRandomAutomaton();
     }
 

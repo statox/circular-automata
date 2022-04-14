@@ -31,8 +31,13 @@ type GenerationSettingsStore = {
 };
 
 type GenerationControlsStore = {
+    // lastReset is used to trigger an update without changing the other props
+    // It is used to reset the timer e.g. when generating a new automaton while
+    // automatic generations are already enabled
+    lastReset: number;
     enableAutomaticGeneration: boolean;
-    interval: number; // Time in milliseconds between each random generation
+    // Time in milliseconds between each random generation
+    interval: number;
 };
 
 export type {

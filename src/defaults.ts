@@ -25,6 +25,7 @@ const defaultColorStore: ColorStore = {
 const defaultRule = 22;
 
 const defaultDenerationControlsStore: GenerationControlsStore = {
+    lastReset: 0,
     enableAutomaticGeneration: false,
     interval: 1000
 };
