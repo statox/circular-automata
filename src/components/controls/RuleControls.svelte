@@ -39,5 +39,3 @@
         <RuleDescriptor rule={computeRuleToBinaryArray($rule)}/>
     </div>
 </main>
-
-<style src="./Controls.css"></style>

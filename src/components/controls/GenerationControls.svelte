@@ -43,5 +43,3 @@
         </div>
     </div>
 </main>
-
-<style src="./Controls.css"></style>

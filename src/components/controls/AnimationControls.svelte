@@ -28,5 +28,3 @@
         </table>
     </div>
 </main>
-
-<style src="./Controls.css"></style>
