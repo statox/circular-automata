@@ -1,17 +1,20 @@
 import App from './App.svelte';
 import {get} from 'svelte/store';
-import {automatonStore, automatonDimensionsStore, generationControlsStore, rule} from './stores';
+import {automatonStore, automatonDimensionsStore, colorStore, generationControlsStore, rule} from './stores';
 import {generateAutomaton} from './services/automaton-services';
-import {updateAppWithRandomAutomaton} from './services/generation-services';
+import {getRandomColors, updateAppWithRandomAutomaton} from './services/generation-services';
 
 const app = new App({
     target: document.body,
     props: {}
 });
 
-// Initialize the automaton for first use
+// Initialize the automaton in the store then use it in updateAppWithRandomAutomaton()
+// to make a random first state
 const newAutomaton = generateAutomaton({ruleNumber: 110, W: 50, H: 50});
 automatonStore.set({A: newAutomaton});
+updateAppWithRandomAutomaton();
+colorStore.set(getRandomColors());
 
 /*
  * Reactive updates of the application state when controls are modified

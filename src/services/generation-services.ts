@@ -88,4 +88,4 @@ function updateAppWithRandomAutomaton() {
     }
 }
 
-export {updateAppWithRandomAutomaton};
+export {updateAppWithRandomAutomaton, getRandomColors};
