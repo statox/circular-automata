@@ -1,7 +1,14 @@
 import App from './App.svelte';
 import {get} from 'svelte/store';
-import {automatonStore, automatonDimensionsStore, colorStore, generationControlsStore, rule} from './stores';
-import {generateAutomaton} from './services/automaton-services';
+import {
+    animationStore,
+    automatonStore,
+    automatonDimensionsStore,
+    colorStore,
+    generationControlsStore,
+    rule
+} from './stores';
+import {animationStep, generateAutomaton} from './services/automaton-services';
 import {getRandomColors, updateAppWithRandomAutomaton} from './services/generation-services';
 
 const app = new App({
@@ -66,6 +73,22 @@ generationControlsStore.subscribe((newControls) => {
     }
     if (newControls.enableAutomaticGeneration) {
         updateTimer = setInterval(updateAppWithRandomAutomaton, newControls.interval);
+    }
+});
+
+let animationTimer: NodeJS.Timer;
+animationStore.subscribe((newControls) => {
+    if (animationTimer) {
+        clearInterval(animationTimer);
+    }
+    if (newControls.play) {
+        if (newControls.fps === 0) {
+            throw new Error("Can't set a fps of 0");
+        }
+        const interval = 1000 / newControls.fps;
+        animationTimer = setInterval(() => {
+            animationStep(get(automatonStore).A);
+        }, interval);
     }
 });
 

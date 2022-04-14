@@ -24,7 +24,7 @@
                         <span>
                             FPS: {$animationStore.fps}
                             <br/>
-                            <input class='width-90' type=range bind:value={$animationStore.fps} min=0 max=60>
+                            <input class='width-90' type=range bind:value={$animationStore.fps} min=1 max=60>
                         </span>
                     </td>
                 </tr>

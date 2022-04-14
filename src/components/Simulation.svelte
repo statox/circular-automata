@@ -34,11 +34,6 @@
                 drawAutomatonAsCircleInversed(p5, $automatonStore.A, {fillColor, firstLineFillColor})
             }
 
-            /* drawAutomatonInfo(p5, $automatonStore.A); */
-            if ($animationStore.play) {
-                animationStep($automatonStore.A);
-            }
-
             p5.frameRate($animationStore.fps);
         };
     };
