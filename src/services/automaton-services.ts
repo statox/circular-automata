@@ -38,14 +38,16 @@ function generateNewLine(A: Line[], rules: Rules) {
     A.push(newLine);
 }
 
-function turnIntoPyramidAutomata(A: Line[]) {
-    const M = Math.floor(A[0].length / 2);
-    for (let y = 0; y < A.length; y++) {
-        for (let x = 0; x < Math.min(y, A[0].length); x++) {
-            A[y][M + x] = true;
-            A[y][M - x] = true;
-        }
-    }
-}
+/*
+ * function turnIntoPyramidAutomata(A: Line[]) {
+ *     const M = Math.floor(A[0].length / 2);
+ *     for (let y = 0; y < A.length; y++) {
+ *         for (let x = 0; x < Math.min(y, A[0].length); x++) {
+ *             A[y][M + x] = true;
+ *             A[y][M - x] = true;
+ *         }
+ *     }
+ * }
+ */
 
 export {generateAutomaton, animationStep};

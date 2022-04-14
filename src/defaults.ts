@@ -28,7 +28,7 @@ const defaultRule = 22;
 const defaultDenerationControlsStore: GenerationControlsStore = {
     lastReset: 0,
     enableAutomaticGeneration: true,
-    interval: 8000
+    interval: 1000
 };
 
 const defaultGenerationSettingsStore: GenerationSettingsStore = {

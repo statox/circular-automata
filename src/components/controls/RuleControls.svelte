@@ -1,13 +1,12 @@
 <script lang="ts">
-    import { onDestroy } from 'svelte'
     import RuleDescriptor from './RuleDescriptor.svelte';
     import {rule} from '../../stores';
 
-    export const computeRuleToBinaryArray = (r) => {
+    export const computeRuleToBinaryArray = (r: number) => {
         return [...r.toString(2).padStart(8, '0')].map(c => c === '1')
     };
 
-    const updateBit = (i, bit) => {
+    const updateBit = (i: number) => {
         const ruleNumberBin = computeRuleToBinaryArray($rule);
         ruleNumberBin[i] = !ruleNumberBin[i];
         const binString = '0b' + ruleNumberBin.map(c => c ? '1' : '0').join('');
@@ -27,12 +26,12 @@
             <table id="ruleDigitsTable" class="center">
                 <tr>
                     {#each computeRuleToBinaryArray($rule) as bit, i}
-                        <th on:click={() => updateBit(i, bit)}>{bit ? '1' : '0'}</th>
+                        <th on:click={() => updateBit(i)}>{bit ? '1' : '0'}</th>
                     {/each}
                 </tr>
                 <tr>
                     {#each computeRuleToBinaryArray($rule) as bit, i}
-                        <th on:click={() => updateBit(i, bit)}>
+                        <th on:click={() => updateBit(i)}>
                             <input type="radio" id="toggleBit{i}" checked={bit}>
                         </th>
                     {/each}

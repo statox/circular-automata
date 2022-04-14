@@ -1,5 +1,3 @@
-import type {Automaton} from './automaton.types';
-
 type Color = {
     H: number;
     S: number;

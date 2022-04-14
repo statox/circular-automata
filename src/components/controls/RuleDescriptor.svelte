@@ -8,7 +8,7 @@
         <table id="descriptorTable">
             <tr>
                 <td>Parent configuration</td>
-                {#each rule as bit, i}
+                {#each rule as _, i}
                 <td>{(7-i).toString(2).padStart(3, '0')}</td>
                 {/each}
             </tr>

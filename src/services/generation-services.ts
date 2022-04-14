@@ -2,14 +2,7 @@ import {get} from 'svelte/store';
 import type {Automaton} from '../types/automaton.types';
 import type {GenerationSettingsStore, ColorStore} from '../types/stores.types';
 import {generateAutomaton} from './automaton-services';
-import {
-    automatonStore,
-    automatonDimensionsStore,
-    colorStore,
-    generationControlsStore,
-    rule,
-    generationSettingsStore
-} from '../stores';
+import {automatonStore, automatonDimensionsStore, colorStore, rule, generationSettingsStore} from '../stores';
 import {AUTOMATON_MAX_DIMENSIONS} from '../defaults';
 
 const {W: MAX_W, H: MAX_H} = AUTOMATON_MAX_DIMENSIONS;

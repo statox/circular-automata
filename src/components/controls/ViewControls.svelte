@@ -3,7 +3,7 @@
     import type {SimulationType} from '../../types/simulation.types';
     let viewOptions: SimulationType[] = ['square', 'circle', 'circle_inv'];
 
-    const toggleSetting = (option) => {
+    const toggleSetting = (option: SimulationType) => {
         $viewStore[option] = !$viewStore[option];
     };
 </script>

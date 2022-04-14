@@ -22,9 +22,6 @@ function drawAutomatonAsCircle(p5: P5, A: Automaton, colors: {fillColor: P5.Colo
     const scale = p5.width / 2 / A.cells.length;
     const angle = p5.TWO_PI / A.cells[0].length;
 
-    const scaleX = 20;
-    const scaleY = 20;
-
     p5.push();
     p5.translate(p5.width / 2, p5.height / 2);
     const pos = new P5.Vector();
@@ -78,9 +75,6 @@ function drawAutomatonAsCircleInversed(
 ) {
     const scale = p5.width / 2 / A.cells.length;
     const angle = p5.TWO_PI / A.cells[0].length;
-
-    const scaleX = 20;
-    const scaleY = 20;
 
     p5.push();
     p5.translate(p5.width / 2, p5.height / 2);

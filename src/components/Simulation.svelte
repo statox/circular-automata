@@ -2,11 +2,10 @@
     import { onDestroy, onMount } from 'svelte';
     import P5 from 'p5';
     import {animationStore, colorStore, automatonStore} from '../stores';
-    import {animationStep} from '../services/automaton-services';
-    import {drawAutomatonAsSquare,drawAutomatonAsCircle,drawAutomatonInfo, drawAutomatonAsCircleInversed} from '../services/drawing-services';
+    import {drawAutomatonAsSquare,drawAutomatonAsCircle,drawAutomatonAsCircleInversed} from '../services/drawing-services';
     import type {SimulationType} from '../types/simulation.types';
     export let type: SimulationType;
-    let p5Instance;
+    let p5Instance: P5;
 
     const sketch = (p5: P5) => {
         const H = 700;

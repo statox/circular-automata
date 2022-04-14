@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {automatonDimensionsStore, generationControlsStore, generationSettingsStore, automatonStore, colorStore, rule} from '../../stores';
+    import {generationControlsStore, generationSettingsStore} from '../../stores';
     import {updateAppWithRandomAutomaton} from '../../services/generation-services';
 
     const generateRandom = () => {
@@ -7,7 +7,8 @@
         updateAppWithRandomAutomaton();
     }
 
-    const toggleSetting = (setting) => {
+    // TODO Type setting with GenerationSettingsStore keys
+    const toggleSetting = (setting: string) => {
         $generationSettingsStore[setting] = !$generationSettingsStore[setting]
     }
 </script>

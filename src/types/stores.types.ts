@@ -1,4 +1,3 @@
-import type {Automaton} from './automaton.types';
 import type {Color} from './data.types';
 import type {SimulationType} from './simulation.types';
 
