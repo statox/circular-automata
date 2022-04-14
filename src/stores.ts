@@ -5,7 +5,8 @@ import {
     defaultColorStore,
     defaultDenerationControlsStore,
     defaultGenerationSettingsStore,
-    defaultRule
+    defaultRule,
+    defaultViewStore
 } from './defaults';
 import type {Automaton} from './types/automaton.types';
 import type {
@@ -23,6 +24,7 @@ const colorStore = writable(defaultColorStore);
 const generationControlsStore = writable(defaultDenerationControlsStore);
 const generationSettingsStore = writable(defaultGenerationSettingsStore);
 const rule = writable(defaultRule);
+const viewStore = writable(defaultViewStore);
 
 const automatonStore = writable({
     A: null as Automaton
@@ -35,5 +37,6 @@ export {
     automatonStore,
     automatonDimensionsStore,
     generationSettingsStore,
-    generationControlsStore
+    generationControlsStore,
+    viewStore
 };

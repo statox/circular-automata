@@ -3,7 +3,8 @@ import type {
     AutomatonDimensionsStore,
     ColorStore,
     GenerationControlsStore,
-    GenerationSettingsStore
+    GenerationSettingsStore,
+    ViewsStore
 } from './types/stores.types';
 
 const defaultAnimationStore: AnimationStore = {
@@ -39,6 +40,12 @@ const defaultGenerationSettingsStore: GenerationSettingsStore = {
     firstLineDensity: 50
 };
 
+const defaultViewStore: ViewsStore = {
+    square: true,
+    circle: true,
+    circle_inv: false
+};
+
 const AUTOMATON_MAX_DIMENSIONS: AutomatonDimensionsStore = {
     W: 200,
     H: 200
@@ -51,5 +58,6 @@ export {
     defaultColorStore,
     defaultDenerationControlsStore,
     defaultGenerationSettingsStore,
-    defaultRule
+    defaultRule,
+    defaultViewStore
 };

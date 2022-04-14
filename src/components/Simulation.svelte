@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { onDestroy, onMount } from 'svelte';
     import P5 from 'p5';
     import {animationStore, colorStore, automatonStore} from '../stores';
     import {animationStep} from '../services/automaton-services';
@@ -13,7 +14,7 @@
 
         p5.setup = () => {
             const canvas = p5.createCanvas(H, W);
-            canvas.parent('canvasDiv');
+            canvas.parent('canvasDiv'+type);
             p5.colorMode(p5.HSB, 360, 100, 100, 1);
         };
 
@@ -42,9 +43,16 @@
         };
     };
 
-    p5Instance = new P5(sketch);
+    onMount(() => {
+        p5Instance = new P5(sketch);
+    });
+
+    onDestroy(() => {
+        p5Instance.remove()
+        p5Instance = null;
+    });
 </script>
 
 <main>
-    <div id="canvasDiv"></div>
+    <div id={"canvasDiv"+type}></div>
 </main>

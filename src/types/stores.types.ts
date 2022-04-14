@@ -1,5 +1,6 @@
 import type {Automaton} from './automaton.types';
 import type {Color} from './data.types';
+import type {SimulationType} from './simulation.types';
 
 type AnimationStore = {
     play: boolean;
@@ -40,11 +41,16 @@ type GenerationControlsStore = {
     interval: number;
 };
 
+type ViewsStore = {
+    [key in SimulationType]: boolean;
+};
+
 export type {
     AnimationStore,
     AutomatonStore,
     AutomatonDimensionsStore,
     ColorStore,
     GenerationSettingsStore,
-    GenerationControlsStore
+    GenerationControlsStore,
+    ViewsStore
 };

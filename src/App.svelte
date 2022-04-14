@@ -1,4 +1,5 @@
 <script lang="ts">
+import {viewStore} from './stores';
 import Controls from './components/controls/Controls.svelte';
 import GenerationControls from './components/controls/GenerationControls.svelte';
 import Simulation from './components/Simulation.svelte';
@@ -7,9 +8,15 @@ import Simulation from './components/Simulation.svelte';
 <main>
     <h1>Circular automata</h1>
     <GenerationControls />
-    <Simulation type='square' />
-    <Simulation type='circle' />
-    <Simulation type='circle_inv' />
+    {#if $viewStore['square'] }
+        <Simulation type='square' />
+    {/if}
+    {#if $viewStore['circle'] }
+        <Simulation type='circle' />
+    {/if}
+    {#if $viewStore['circle_inv'] }
+        <Simulation type='circle_inv' />
+    {/if}
     <Controls />
 </main>
 
