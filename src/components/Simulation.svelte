@@ -2,8 +2,9 @@
     import P5 from 'p5';
     import {animationStore, colorStore, automatonStore} from '../stores';
     import {animationStep} from '../services/automaton-services';
-    import {drawAutomatonAsSquare,drawAutomatonAsCircle,drawAutomatonInfo} from '../services/drawing-services';
-    export let type: 'square'|'circle';
+    import {drawAutomatonAsSquare,drawAutomatonAsCircle,drawAutomatonInfo, drawAutomatonAsCircleInversed} from '../services/drawing-services';
+    import type {SimulationType} from '../types/simulation.types';
+    export let type: SimulationType;
     let p5Instance;
 
     const sketch = (p5: P5) => {
@@ -26,8 +27,10 @@
             p5.background(backgroundColor);
             if (type === 'square') {
                 drawAutomatonAsSquare(p5, $automatonStore.A, {fillColor, firstLineFillColor});
-            } else {
+            } else if (type === 'circle') {
                 drawAutomatonAsCircle(p5, $automatonStore.A, {fillColor, firstLineFillColor});
+            } else if (type === 'circle_inv') {
+                drawAutomatonAsCircleInversed(p5, $automatonStore.A, {fillColor, firstLineFillColor})
             }
 
             /* drawAutomatonInfo(p5, $automatonStore.A); */

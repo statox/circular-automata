@@ -9,6 +9,7 @@ import Simulation from './components/Simulation.svelte';
     <GenerationControls />
     <Simulation type='square' />
     <Simulation type='circle' />
+    <Simulation type='circle_inv' />
     <Controls />
 </main>
 
