@@ -4,11 +4,7 @@
 
     const timers = {
         automaticRandomGenerationTimer: null,
-        animationTimer: null
     }
-
-    const MAX_W = 600;
-    const MAX_H = 600;
 
     const generateRandom = () => {
         const newAutomaton = getRandomAutomaton({currentAutomaton: $automatonStore.A, generationSettings: $generationSettingsStore});
@@ -20,47 +16,6 @@
         if ($generationSettingsStore.color) {
             $colorStore = getRandomColors();
         }
-
-/*
- *         if (settings.W) {
- *             data.W = Math.floor(Math.random() * MAX_W);;
- *         }
- *         if (settings.H) {
- *             data.H = Math.floor(Math.random() * MAX_H);
- *         }
- *         if (settings.rule) {
- *             data.ruleNumber = Math.floor(Math.random() * 256);
- *         }
- *         if (settings.firstLine || settings.W) {
- *             data.firstLine = [];
- *             let atLeastOne = false;
- *             for (let _=0; _<data.W; _++) {
- *                 const v = Math.random() < settings.firstLineDensity/100
- *                 if (v) atLeastOne=true;
- *                 data.firstLine.push(v);
- *             }
- *             if (!atLeastOne) {
- *                 data.firstLine[Math.floor(data.firstLine.length/2)] = true;
- *             }
- *         }
- * 
- *         // Regenerate a new automaton if one of its configuration changed
- *         // No need to do it for color changes
- *         if (settings.W || settings.H || settings.rule || settings.firstLine) {
- *             dispatch('updateData')
- *         }
- * 
- *         if (settings.color) {
- *             $colorStore.background.H = Math.random() * 360;
- *             $colorStore.fill.H = ($colorStore.background.H + 360/3) % 360;
- *             $colorStore.firstLineFill.H = ($colorStore.background.H - 360/3) % 360;
- * 
- *             $colorStore.background.S = 40 + Math.floor(Math.random() * 60);
- *             $colorStore.fill.S = 40 + Math.floor(Math.random() * 60);
- *             $colorStore.firstLineFill.S = 40 + Math.floor(Math.random() * 60);
- *         }
- * 
- */
     }
 
     const toggleAutomaticGeneration = () => {
