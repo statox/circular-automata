@@ -9,11 +9,22 @@ const app = new App({
     props: {}
 });
 
+// Initialize the automaton for first use
 const newAutomaton = generateAutomaton({ruleNumber: 110, W: 50, H: 50});
 automatonStore.set({A: newAutomaton});
 
+/*
+ * Reactive updates of the application state when controls are modified
+ */
+
 rule.subscribe((value) => {
-    const newAutomaton = generateAutomaton({ruleNumber: value, W: 50, H: 50});
+    const currentAutomaton = get(automatonStore).A;
+    const newAutomaton = generateAutomaton({
+        ruleNumber: value,
+        W: currentAutomaton.W,
+        H: currentAutomaton.H,
+        firstLine: [...currentAutomaton.cells[0]]
+    });
     automatonStore.set({A: newAutomaton});
 });
 
