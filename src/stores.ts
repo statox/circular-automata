@@ -5,6 +5,7 @@ import type {
     AutomatonDimensionsStore,
     AutomatonStore,
     ColorStore,
+    GenerationControlsStore,
     GenerationSettingsStore
 } from './types/stores.types';
 
@@ -30,7 +31,6 @@ const automatonDimensionsStore = writable({
 } as AutomatonDimensionsStore);
 
 const generationSettingsStore = writable({
-    enableAutomaticGeneration: true,
     W: false,
     H: false,
     rule: true,
@@ -39,4 +39,17 @@ const generationSettingsStore = writable({
     firstLineDensity: 50
 } as GenerationSettingsStore);
 
-export {animationStore, colorStore, rule, automatonStore, automatonDimensionsStore, generationSettingsStore};
+const generationControlsStore = writable({
+    enableAutomaticGeneration: true,
+    timer: null
+} as GenerationControlsStore);
+
+export {
+    animationStore,
+    colorStore,
+    rule,
+    automatonStore,
+    automatonDimensionsStore,
+    generationSettingsStore,
+    generationControlsStore
+};

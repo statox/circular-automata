@@ -1,6 +1,6 @@
 import App from './App.svelte';
 import {get} from 'svelte/store';
-import {automatonStore, automatonDimensionsStore, rule} from './stores';
+import {automatonStore, automatonDimensionsStore, generationControlsStore, rule} from './stores';
 import {generateAutomaton} from './services/automaton-services';
 
 const app = new App({
@@ -42,6 +42,11 @@ automatonDimensionsStore.subscribe((newSettings) => {
 
     const newAutomaton = generateAutomaton({ruleNumber: currentAutomaton.ruleNumber, W, H, firstLine});
     automatonStore.set({A: newAutomaton});
+});
+
+generationControlsStore.subscribe((newControls) => {
+    console.log('controls updated');
+    console.log(newControls);
 });
 
 export default app;

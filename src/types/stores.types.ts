@@ -22,7 +22,6 @@ type AutomatonDimensionsStore = {
 };
 
 type GenerationSettingsStore = {
-    enableAutomaticGeneration: boolean;
     W: boolean;
     H: boolean;
     rule: boolean;
@@ -31,4 +30,16 @@ type GenerationSettingsStore = {
     firstLineDensity: number; // Percentage of alive cells in new first lines (0-100)
 };
 
-export type {AnimationStore, AutomatonStore, AutomatonDimensionsStore, ColorStore, GenerationSettingsStore};
+type GenerationControlsStore = {
+    enableAutomaticGeneration: boolean;
+    timer: number;
+};
+
+export type {
+    AnimationStore,
+    AutomatonStore,
+    AutomatonDimensionsStore,
+    ColorStore,
+    GenerationSettingsStore,
+    GenerationControlsStore
+};

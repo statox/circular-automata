@@ -1,21 +1,13 @@
 <script lang="ts">
     import {automatonDimensionsStore, generationSettingsStore, automatonStore, colorStore, rule} from '../../stores';
-    import {getRandomAutomaton,getRandomColors} from '../../services/generation-services';
+    import {updateAppWithRandomAutomaton} from '../../services/generation-services';
 
     const timers = {
         automaticRandomGenerationTimer: null,
     }
 
     const generateRandom = () => {
-        const newAutomaton = getRandomAutomaton({currentAutomaton: $automatonStore.A, generationSettings: $generationSettingsStore});
-        $automatonDimensionsStore.W = newAutomaton.W;
-        $automatonDimensionsStore.H = newAutomaton.H;
-        $rule = newAutomaton.ruleNumber;
-        $automatonStore.A = newAutomaton;
-
-        if ($generationSettingsStore.color) {
-            $colorStore = getRandomColors();
-        }
+        updateAppWithRandomAutomaton();
     }
 
     const toggleAutomaticGeneration = () => {

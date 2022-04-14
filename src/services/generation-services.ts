@@ -1,6 +1,15 @@
+import {get} from 'svelte/store';
 import type {Automaton} from '../types/automaton.types';
 import type {GenerationSettingsStore, ColorStore} from '../types/stores.types';
 import {generateAutomaton} from './automaton-services';
+import {
+    automatonStore,
+    automatonDimensionsStore,
+    colorStore,
+    generationControlsStore,
+    rule,
+    generationSettingsStore
+} from '../stores';
 
 const MAX_W = 600;
 const MAX_H = 600;
@@ -62,4 +71,21 @@ function getRandomColors(): ColorStore {
     return {background, fill, firstLineFill};
 }
 
-export {getRandomAutomaton, getRandomColors};
+function updateAppWithRandomAutomaton() {
+    const currentAutomaton = get(automatonStore).A;
+    const generationSettings = get(generationSettingsStore);
+
+    const newAutomaton = getRandomAutomaton({
+        currentAutomaton,
+        generationSettings
+    });
+    automatonDimensionsStore.set({W: newAutomaton.W, H: newAutomaton.H});
+    rule.set(newAutomaton.ruleNumber);
+    automatonStore.set({A: newAutomaton});
+
+    if (generationSettings.color) {
+        colorStore.set(getRandomColors());
+    }
+}
+
+export {updateAppWithRandomAutomaton};
