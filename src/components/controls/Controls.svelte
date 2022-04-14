@@ -8,7 +8,5 @@
     <h2>Controls</h2>
     <RuleControls />
     <DimensionsControls />
-    <!--
     <AnimationControls />
-    -->
 </main>

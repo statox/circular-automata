@@ -19,7 +19,7 @@ appData.firstLine[Math.floor(appData.W/2)] = true;
     -->
     <Simulation type='square' />
     <Simulation type='circle' />
-    <Controls data={appData}  />
+    <Controls />
 </main>
 
 <style>

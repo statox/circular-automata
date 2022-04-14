@@ -1,6 +1,6 @@
 import App from './App.svelte';
 import {writable, get} from 'svelte/store';
-import {automatonStore, automatonSettingsStore, rule} from './stores';
+import {automatonStore, automatonDimensionsStore, rule} from './stores';
 import {generateAutomaton} from './services/automaton-services';
 
 const app = new App({
@@ -16,7 +16,7 @@ rule.subscribe((value) => {
     automatonStore.set({A: newAutomaton});
 });
 
-automatonSettingsStore.subscribe((newSettings) => {
+automatonDimensionsStore.subscribe((newSettings) => {
     const {W, H} = newSettings;
 
     const currentAutomaton = get(automatonStore).A;
