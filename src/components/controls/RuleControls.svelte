@@ -19,23 +19,27 @@
 
 <main>
     <div class="center controlSectionDiv">
-        <h3>Rule controls</h3>
-        <span>Rule: <input type="number" bind:value={$rule} min=0 max=256></span>
-        <table id="ruleDigitsTable" class="center">
-            <tr>
-                {#each computeRuleToBinaryArray($rule) as bit, i}
-                <th on:click={() => updateBit(i, bit)}>{bit ? '1' : '0'}</th>
-                {/each}
-            </tr>
-            <tr>
-                {#each computeRuleToBinaryArray($rule) as bit, i}
-                <th on:click={() => updateBit(i, bit)}>
-                    <input type="radio" id="toggleBit{i}" checked={bit}>
-                </th>
-                {/each}
-            </tr>
-        </table>
-        <br/>
-        <RuleDescriptor rule={computeRuleToBinaryArray($rule)}/>
+        <details open>
+            <summary>
+                <h3>Rule controls</h3>
+            </summary>
+            <span>Rule: <input type="number" bind:value={$rule} min=0 max=256></span>
+            <table id="ruleDigitsTable" class="center">
+                <tr>
+                    {#each computeRuleToBinaryArray($rule) as bit, i}
+                        <th on:click={() => updateBit(i, bit)}>{bit ? '1' : '0'}</th>
+                    {/each}
+                </tr>
+                <tr>
+                    {#each computeRuleToBinaryArray($rule) as bit, i}
+                        <th on:click={() => updateBit(i, bit)}>
+                            <input type="radio" id="toggleBit{i}" checked={bit}>
+                        </th>
+                    {/each}
+                </tr>
+            </table>
+            <br/>
+            <RuleDescriptor rule={computeRuleToBinaryArray($rule)}/>
+        </details>
     </div>
 </main>
