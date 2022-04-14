@@ -39,7 +39,13 @@ const defaultGenerationSettingsStore: GenerationSettingsStore = {
     firstLineDensity: 50
 };
 
+const AUTOMATON_MAX_DIMENSIONS: AutomatonDimensionsStore = {
+    W: 200,
+    H: 200
+};
+
 export {
+    AUTOMATON_MAX_DIMENSIONS,
     defaultAnimationStore,
     defaultAutomatonDimensionsStore,
     defaultColorStore,

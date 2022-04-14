@@ -1,8 +1,8 @@
 <script lang="ts">
     import {automatonDimensionsStore} from '../../stores';
+    import {AUTOMATON_MAX_DIMENSIONS} from '../../defaults';
 
-    const MAX_W = 600;
-    const MAX_H = 600;
+    const {W: MAX_W, H: MAX_H} = AUTOMATON_MAX_DIMENSIONS;
 </script>
 
 <main>

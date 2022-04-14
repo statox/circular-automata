@@ -10,9 +10,9 @@ import {
     rule,
     generationSettingsStore
 } from '../stores';
+import {AUTOMATON_MAX_DIMENSIONS} from '../defaults';
 
-const MAX_W = 600;
-const MAX_H = 600;
+const {W: MAX_W, H: MAX_H} = AUTOMATON_MAX_DIMENSIONS;
 
 function getRandomAutomaton(params: {currentAutomaton: Automaton; generationSettings: GenerationSettingsStore}) {
     const {currentAutomaton, generationSettings} = params;
