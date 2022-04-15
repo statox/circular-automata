@@ -43,7 +43,8 @@ const defaultGenerationSettingsStore: GenerationSettingsStore = {
 const defaultViewStore: ViewsStore = {
     square: true,
     circle: true,
-    circle_inv: false
+    circle_inv: true,
+    webgl: false
 };
 
 const AUTOMATON_MAX_DIMENSIONS: AutomatonDimensionsStore = {
