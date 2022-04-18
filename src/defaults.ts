@@ -44,7 +44,7 @@ const defaultViewStore: ViewsStore = {
     square: true,
     circle: true,
     circle_inv: true,
-    webgl: false
+    p5_webgl: false
 };
 
 const AUTOMATON_MAX_DIMENSIONS: AutomatonDimensionsStore = {

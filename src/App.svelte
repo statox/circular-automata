@@ -3,7 +3,7 @@ import {viewStore} from './stores';
 import Controls from './components/controls/Controls.svelte';
 import GenerationControls from './components/controls/GenerationControls.svelte';
 import Simulation from './components/Simulation.svelte';
-import SimulationWebgl from './components/SimulationWebgl.svelte';
+import SimulationP5Webgl from './components/SimulationP5Webgl.svelte';
 </script>
 
 <main>
@@ -18,8 +18,8 @@ import SimulationWebgl from './components/SimulationWebgl.svelte';
     {#if $viewStore['circle_inv'] }
         <Simulation type='circle_inv' />
     {/if}
-    {#if $viewStore['webgl'] }
-        <SimulationWebgl />
+    {#if $viewStore['p5_webgl'] }
+        <SimulationP5Webgl />
     {/if}
     <Controls />
 </main>
