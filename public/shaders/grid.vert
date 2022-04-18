@@ -1,7 +1,6 @@
 /*
-/*
  * vert file and comments from adam ferriss https://github.com/aferriss/p5jsShaderExamples with additional comments from Louise Lessel
-*/ 
+ */
 
 precision highp float;
 
