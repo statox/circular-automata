@@ -1,7 +1,7 @@
 <script lang="ts">
     import {viewStore} from '../../stores';
     import type {SimulationType} from '../../types/simulation.types';
-    let viewOptions: SimulationType[] = ['square', 'circle', 'circle_inv', 'p5_webgl'];
+    let viewOptions: SimulationType[] = ['square', 'circle', 'circle_inv', 'p5_webgl', 'vanilla_webgl'];
 
     const toggleSetting = (option: SimulationType) => {
         $viewStore[option] = !$viewStore[option];

@@ -4,6 +4,7 @@ import Controls from './components/controls/Controls.svelte';
 import GenerationControls from './components/controls/GenerationControls.svelte';
 import Simulation from './components/Simulation.svelte';
 import SimulationP5Webgl from './components/SimulationP5Webgl.svelte';
+import SimulationVanillaWebgl from './components/SimulationVanillaWebgl.svelte';
 </script>
 
 <main>
@@ -20,6 +21,9 @@ import SimulationP5Webgl from './components/SimulationP5Webgl.svelte';
     {/if}
     {#if $viewStore['p5_webgl'] }
         <SimulationP5Webgl />
+    {/if}
+    {#if $viewStore['vanilla_webgl'] }
+        <SimulationVanillaWebgl />
     {/if}
     <Controls />
 </main>
